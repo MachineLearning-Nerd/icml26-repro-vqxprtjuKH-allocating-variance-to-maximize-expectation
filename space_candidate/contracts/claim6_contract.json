@@ -1,0 +1,7 @@
+{
+  "claim": 6,
+  "paper_anchor": "Figures 1-2 and Section 1.3",
+  "status": "BLOCKED",
+  "completed_routes": ["source completeness", "image digitization", "independent proof reconstruction", "dedicated falsification attempt"],
+  "blocker": "The paper and source bundle omit m, seeds, Monte Carlo sample count, optimizer/stopping rule, uncertainty, and raw values."
+}

@@ -1,0 +1,7 @@
+{
+  "claim": 6,
+  "paper_anchor": "Figures 1-2 and Section 1.3",
+  "statement": "Monte Carlo simulations at n=8 and p=1/8,...,1 illustrate concavity and concentration in independent and block-correlated settings.",
+  "required_for_verification": "Exact generation distribution, m, seeds, Monte Carlo sample count, optimizer/stopping rule, raw values, regenerated uncertainty, and comparison to the paper.",
+  "verdict_rule": "BLOCKED after exactly four distinct routes if the public artifact remains under-specified and no valid falsification is established."
+}

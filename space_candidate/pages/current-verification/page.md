@@ -5,6 +5,35 @@ This page supersedes the historical verifier at revision
 reachable below under the exact navigation label **Historical rejected
 baseline**.
 
+## Claim 6 — Figures 1–2
+
+**Exact reproduction verdict: BLOCKED after four routes.**
+
+The source bundle contains the rendered figures, but no simulation code or raw
+data. The paper specifies `n=8`, `p=1/8,...,1`, and ±1 correlation inside 2x2
+blocks, while omitting `m`, seeds, Monte Carlo sample count, optimizer,
+stopping rule, raw values, and uncertainty. Those choices materially determine
+the displayed allocations.
+
+Four different routes were completed:
+
+1. the exact hashed arXiv bundle was inspected member by member;
+2. Figure 1 was digitized from exact RGB pixels, and Figure 2 visibly changes
+   from one uniform level at `p=0.25` to two allocation levels at `p=1`;
+3. the max inequality underlying the independent concavity proof was
+   reconstructed and checked;
+4. a falsification attempt found a `-3`-pixel final second difference in the
+   negative-correlation curve, but this is comparable to line width and is not
+   a valid numerical counterexample without raw values.
+
+The independent displayed curve has pixel second differences
+`[142, 41, 7.5, 12, 9, 9]`, consistent with concavity. This is evidence about
+the image, not an independently regenerated Monte Carlo experiment.
+
+- [Digitized raw CSV](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/raw/claim6_digitized_payoff.csv)
+- [Four-route verifier](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/code/claim6_verifier.py)
+- [Exact claim contract](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/contracts/claim6_contract.json)
+
 ## Claim 2 — Theorem 1.2
 
 **Exact reproduction verdict: FALSIFIED as written. Live judge: pending.**
@@ -173,4 +202,4 @@ Negative control: removing `sum_i Sigma_ii<=1` restores the uncontrolled
 | 3 | this page | yes | pending | pending | yes | yes | yes | BLOCKED |
 | 4 | this page | yes | yes | yes | yes | yes | yes | FALSIFIED |
 | 5 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
-| 6 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
+| 6 | this page | yes | yes | yes | yes | yes | yes | BLOCKED |
