@@ -94,7 +94,9 @@ def verify_negative_control() -> dict[str, object]:
     rows: list[dict[str, object]] = []
     for epsilon in EPSILONS:
         log_inverse = math.log(1.0 / epsilon)
-        log_m = log_inverse**3
+        # The additive 3L term makes the control violate the budget at every
+        # tested epsilon: log(m*epsilon^2) = L^3 + L > 0.
+        log_m = log_inverse**3 + 3.0 * log_inverse
         log_total_variance = log_m + 2.0 * math.log(epsilon)
         rows.append(
             {
@@ -134,4 +136,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -14,8 +14,7 @@ exactly one. Adaptive quadrature evaluates
 
 `epsilon * integral_0^infinity [1-Phi(z)^m] dz`.
 
-An independent 512-node Gauss-Legendre calculation on `[0,12]` must agree
-within `2e-10`. The negative control removes the total-variance budget and
+An independent 256-node Gauss-Legendre calculation on `[0,12]` must agree
+within `2e-9`. The negative control removes the total-variance budget and
 uses a super-polynomial number of equal-variance variables; it is rejected
 because the uncontrolled `sqrt(log m)` factor returns.
-

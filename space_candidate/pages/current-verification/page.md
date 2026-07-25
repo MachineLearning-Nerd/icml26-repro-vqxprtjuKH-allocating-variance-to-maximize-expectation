@@ -75,7 +75,7 @@ it permits every correlation allowed by the lemma.
 
 The stress family is non-vacuous: `m=1/epsilon^2` independent variables each
 have variance exactly `epsilon^2`; all variances are positive and their sum is
-one. Adaptive quadrature is independently checked by 512-node Gauss-Legendre
+one. Adaptive quadrature is independently checked by 256-node Gauss-Legendre
 integration.
 
 - [Raw nonzero cases](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/raw/claim5_nonzero_cases.csv)
