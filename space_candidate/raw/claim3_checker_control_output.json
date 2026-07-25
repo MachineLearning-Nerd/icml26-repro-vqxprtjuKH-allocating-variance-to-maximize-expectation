@@ -1,0 +1,210 @@
+{
+  "independent_checker": {
+    "checker": "384-node Gauss-Legendre table plus exhaustive subsets",
+    "passed": true,
+    "rows": [
+      {
+        "absolute_difference": 1.4077627952246985E-13,
+        "every_greedy_step_independently_maximal": true,
+        "greedy_ratio": 1.0,
+        "implementation_objective": 1.5957691216057315,
+        "independent_level_optimum": 1.5957691216055907,
+        "independent_objective": 1.5957691216055907,
+        "k": 0,
+        "passed": true,
+        "selected": [
+          2
+        ]
+      },
+      {
+        "absolute_difference": 1.9806378759312793E-13,
+        "every_greedy_step_independently_maximal": true,
+        "greedy_ratio": 1.0,
+        "implementation_objective": 2.5004772412411436,
+        "independent_level_optimum": 2.5004772412409455,
+        "independent_objective": 2.5004772412409455,
+        "k": 1,
+        "passed": true,
+        "selected": [
+          2,
+          3,
+          6,
+          1
+        ]
+      },
+      {
+        "absolute_difference": 9.836575998178887E-14,
+        "every_greedy_step_independently_maximal": true,
+        "greedy_ratio": 1.0,
+        "implementation_objective": 1.7841142494844342,
+        "independent_level_optimum": 1.7841142494843358,
+        "independent_objective": 1.7841142494843358,
+        "k": 2,
+        "passed": true,
+        "selected": [
+          2,
+          3,
+          6,
+          1,
+          7,
+          4,
+          0,
+          5
+        ]
+      },
+      {
+        "absolute_difference": 4.9182879990894435E-14,
+        "every_greedy_step_independently_maximal": true,
+        "greedy_ratio": 1.0,
+        "implementation_objective": 0.8920571247422171,
+        "independent_level_optimum": 0.8920571247421679,
+        "independent_objective": 0.8920571247421679,
+        "k": 3,
+        "passed": true,
+        "selected": [
+          2,
+          3,
+          6,
+          1,
+          7,
+          4,
+          0,
+          5
+        ]
+      }
+    ],
+    "tail_audit": "all integrals truncated at z=12; omitted Gaussian tail <1e-32"
+  },
+  "negative_control": {
+    "control": "replace exact greedy marginal by fixed vertex order",
+    "fixed_order_objective": 0.3989422804014327,
+    "greedy_objective": 50.66566961098196,
+    "instance": "128-vertex star with center at index 127, k=0",
+    "ratio": 0.007874015748031496,
+    "required_level_ratio": 0.6321205588285577,
+    "status": "REJECTED_BAD_SUBSTITUTE"
+  },
+  "primary": {
+    "algorithm_contract": {
+      "cardinality": "min(4^k,n)",
+      "levels": "integer k=0,...,floor(log2(n))",
+      "return": "highest-objective level",
+      "selection": "exact current-objective greedy marginal",
+      "variance_each": "4^(-k)"
+    },
+    "claim": "Theorem 1.3 / faithful Algorithm 3 under its proof assumptions",
+    "exhaustive_small_domain": [
+      {
+        "cardinality": 1,
+        "exact_level_objective": 1.5957691216057315,
+        "greedy_objective": 1.5957691216057315,
+        "k": 0,
+        "nemhauser_threshold": 0.6321205588285577,
+        "passed": true,
+        "ratio": 1.0
+      },
+      {
+        "cardinality": 4,
+        "exact_level_objective": 2.5004772412411436,
+        "greedy_objective": 2.5004772412411436,
+        "k": 1,
+        "nemhauser_threshold": 0.6321205588285577,
+        "passed": true,
+        "ratio": 1.0
+      },
+      {
+        "cardinality": 8,
+        "exact_level_objective": 1.7841142494844342,
+        "greedy_objective": 1.7841142494844342,
+        "k": 2,
+        "nemhauser_threshold": 0.6321205588285577,
+        "passed": true,
+        "ratio": 1.0
+      },
+      {
+        "cardinality": 8,
+        "exact_level_objective": 0.8920571247422171,
+        "greedy_objective": 0.8920571247422171,
+        "k": 3,
+        "nemhauser_threshold": 0.6321205588285577,
+        "passed": true,
+        "ratio": 1.0
+      }
+    ],
+    "proof_certificate": {
+      "grouping": "K+2 variance groups; max <= sum of positive group maxima",
+      "machine_checks": {
+        "every_level_budget_feasible": true,
+        "greedy_factor_exhaustive_small_domain": true,
+        "star_first_choice_is_center": true
+      },
+      "mean_reduction": "paper proof requires non-negative means; experiments use exact zero means",
+      "pigeonhole": "one of K+1 retained groups contributes Omega(OPT/log n)",
+      "rounding": "Lemma 2.6: power-of-four variance rounding loses <=2",
+      "submodular_greedy": "Lemma 2.7 plus Nemhauser gives factor 1-1/e",
+      "tail": "Lemma 2.1 makes variance<1/n^2 contribution negligible versus uniform baseline"
+    },
+    "runtime_seconds": 7.490786676993594,
+    "scaling": [
+      {
+        "best_k": 3,
+        "feasible": true,
+        "m": 192,
+        "n": 64,
+        "objective": 15.79730833933718,
+        "runtime_seconds": 0.007476669969037175,
+        "selected_count": 64,
+        "total_variance": 1.0
+      },
+      {
+        "best_k": 4,
+        "feasible": true,
+        "m": 768,
+        "n": 256,
+        "objective": 31.59461667867436,
+        "runtime_seconds": 0.04274713294580579,
+        "selected_count": 256,
+        "total_variance": 1.0
+      },
+      {
+        "best_k": 5,
+        "feasible": true,
+        "m": 3072,
+        "n": 1024,
+        "objective": 63.18923335734872,
+        "runtime_seconds": 0.2473926639650017,
+        "selected_count": 1024,
+        "total_variance": 1.0
+      },
+      {
+        "best_k": 6,
+        "feasible": true,
+        "m": 12288,
+        "n": 4096,
+        "objective": 126.37846671469744,
+        "runtime_seconds": 1.0850830129347742,
+        "selected_count": 4096,
+        "total_variance": 1.0
+      },
+      {
+        "best_k": 7,
+        "feasible": true,
+        "m": 49152,
+        "n": 16384,
+        "objective": 252.75693342939488,
+        "runtime_seconds": 6.026901347911917,
+        "selected_count": 16384,
+        "total_variance": 1.0
+      }
+    ],
+    "star_best": {
+      "best_k": 0,
+      "first_selected": 127,
+      "m": 127,
+      "n": 128,
+      "objective": 50.66566961098197
+    },
+    "status": "VERIFIED"
+  },
+  "status": "VERIFIED"
+}

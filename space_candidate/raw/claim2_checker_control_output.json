@@ -1,0 +1,57 @@
+{
+  "independent_checker": {
+    "checker": "independent rational inequality and Gaussian absolute moment",
+    "max_variance_Y1_minus_Y2": "2",
+    "passed": true,
+    "required_lower": "19/10",
+    "strict_separation": 1.3358104164522437,
+    "symbolic_identity": "1/4-v(1-v)=(2v-1)^2/4>=0",
+    "zero_mean_expected_max_upper": 0.5641895835477563
+  },
+  "negative_control": {
+    "attainable_output": 0.5641895835477563,
+    "attained_by": "Sigma=[[1/2,-1/2],[-1/2,1/2]]",
+    "control": "repair the theorem by requiring input means mu=(0,0)",
+    "exact_zero_mean_optimum": 0.5641895835477563,
+    "required_output_for_epsilon": 0.4641895835477563,
+    "status": "REJECTED_AS_COUNTEREXAMPLE"
+  },
+  "primary": {
+    "claim": "Theorem 1.2 exact literal mean/output quantifiers",
+    "input": {
+      "epsilon": "1/10",
+      "feasible_covariance": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "means": [
+        "2",
+        "0"
+      ],
+      "n": 2,
+      "positive_semidefinite": true,
+      "trace": "1"
+    },
+    "input_opt_lower_bound": "2",
+    "literal_output_distribution": "N(0,Sigma_hat)",
+    "proof": [
+      "E max(Y1,Y2) = E|Y1-Y2|/2 for zero means.",
+      "Var(Y1-Y2)=1-2*Sigma12 under trace(Sigma)=1.",
+      "PSD gives Sigma12 >= -sqrt(v*(1-v)), v=Sigma11.",
+      "v*(1-v)<=1/4, so Var(Y1-Y2)<=2.",
+      "Therefore E max(Y1,Y2)<=1/sqrt(pi)<1<19/10.",
+      "But feasible input covariance diag(0,1) has X1=2 pointwise, so OPT>=2."
+    ],
+    "required_theorem_output_lower_bound": "19/10",
+    "scope": "This falsifies Theorem 1.2 as written. It does not falsify a repaired theorem whose CorrVarAlloc input is explicitly zero-mean.",
+    "status": "FALSIFIED",
+    "universal_zero_mean_output_upper_bound": 0.5641895835477563
+  },
+  "status": "FALSIFIED"
+}

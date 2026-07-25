@@ -1,0 +1,999 @@
+{
+  "claims": {
+    "claim_1": {
+      "independent_checker": {
+        "checker": "adaptive quadrature independent of the 48-node search objective",
+        "passed": true,
+        "rows": [
+          {
+            "absolute_difference": 1.0658141036401503e-14,
+            "adaptive_quadrature_objective": 0.7031098469798432,
+            "epsilon": 0.8,
+            "grid_tuple_valid": true,
+            "implementation_objective": 0.7031098469798539,
+            "mean_amplitude": 0.3,
+            "passed": true,
+            "support": [
+              4,
+              5
+            ]
+          },
+          {
+            "absolute_difference": 8.881784197001252e-15,
+            "adaptive_quadrature_objective": 0.5062792503184516,
+            "epsilon": 0.7,
+            "grid_tuple_valid": true,
+            "implementation_objective": 0.5062792503184604,
+            "mean_amplitude": 0.0,
+            "passed": true,
+            "support": [
+              0,
+              1,
+              2
+            ]
+          }
+        ],
+        "tail_audit": "upper integration limit is max(mu_i+12 sigma_i)"
+      },
+      "negative_control": {
+        "all_standard_deviations_on_epsilon_cubed_grid": false,
+        "control": "continuous equal-variance OPT-like output mislabeled as Algorithm 1",
+        "epsilon": 0.8,
+        "positive_support": 6,
+        "status": "REJECTED_NOT_ALGORITHM_1",
+        "support_cap": 2
+      },
+      "primary": {
+        "algorithm_contract": {
+          "budget_completion": "leftover variance added after grid search; convex order cannot reduce the objective",
+          "objective": "independent Gaussian expected maximum by deterministic quadrature",
+          "search": "all supports up to the cap and every budget-feasible grid tuple",
+          "standard_deviation_grid": "positive multiples of epsilon^3",
+          "support_cap": "ceil(1/epsilon^2)"
+        },
+        "certified_cases": [
+          {
+            "candidate_count": 21,
+            "certified_additive_gap": 0.7774100138106762,
+            "epsilon": 0.8,
+            "grid_spacing": 0.5120000000000001,
+            "mean_amplitude": 0.3,
+            "n": 6,
+            "opt_upper_bound_certificate": "Chernoff log-sum-exp vertex bound",
+            "passed": true,
+            "ptas_objective": 0.7031098469798539,
+            "rigorous_opt_upper_bound": 1.48051986079053,
+            "standard_deviations": [
+              0.5120000000000001,
+              0.8589854480723174
+            ],
+            "support": [
+              4,
+              5
+            ],
+            "support_cap": 2,
+            "variance_sum": 1.0
+          },
+          {
+            "candidate_count": 152,
+            "certified_additive_gap": 0.20082753086808702,
+            "epsilon": 0.7,
+            "grid_spacing": 0.3429999999999999,
+            "mean_amplitude": 0.0,
+            "n": 6,
+            "opt_upper_bound_certificate": "positive-part energy bound",
+            "passed": true,
+            "ptas_objective": 0.5062792503184604,
+            "rigorous_opt_upper_bound": 0.7071067811865475,
+            "standard_deviations": [
+              0.6416813851125808,
+              0.3429999999999999,
+              0.6859999999999998
+            ],
+            "support": [
+              0,
+              1,
+              2
+            ],
+            "support_cap": 3,
+            "variance_sum": 1.0
+          }
+        ],
+        "claim": "Theorem 1.1 independent Gaussian additive PTAS",
+        "proof_certificate": {
+          "finite_opt_upper_bounds": "Chernoff log-sum-exp vertex bound for nonzero means; positive-part energy bound OPT<=1/sqrt(2) for zero means",
+          "lipschitz": "shared-normal coupling gives |Delta E max| <= sqrt(2/pi)*sum_i |Delta sigma_i|",
+          "small_variance_tail": "Claim 5 certificate bounds discarded variables",
+          "support_size": "at most ceil(1/epsilon^2) entries exceed variance epsilon^2",
+          "theorem_calibration": "unspecified O(epsilon) constants require the standard internal-accuracy reparameterization for the universal exact-epsilon statement"
+        },
+        "runtime_seconds": 45.961510032066144,
+        "scaling": [
+          {
+            "candidate_count": 528,
+            "epsilon": 0.8,
+            "n": 32,
+            "objective": 0.759641008304517,
+            "runtime_seconds": 0.039860875927843153,
+            "support": [
+              30,
+              31
+            ],
+            "support_cap": 2,
+            "variance_sum": 1.0
+          },
+          {
+            "candidate_count": 2080,
+            "epsilon": 0.8,
+            "n": 64,
+            "objective": 0.766287866911431,
+            "runtime_seconds": 0.1889581779250875,
+            "support": [
+              62,
+              63
+            ],
+            "support_cap": 2,
+            "variance_sum": 1.0
+          },
+          {
+            "candidate_count": 8256,
+            "epsilon": 0.8,
+            "n": 128,
+            "objective": 0.7696147009727283,
+            "runtime_seconds": 0.974667432019487,
+            "support": [
+              126,
+              127
+            ],
+            "support_cap": 2,
+            "variance_sum": 1.0
+          },
+          {
+            "candidate_count": 32896,
+            "epsilon": 0.8,
+            "n": 256,
+            "objective": 0.7712787601296532,
+            "runtime_seconds": 5.842028819024563,
+            "support": [
+              254,
+              255
+            ],
+            "support_cap": 2,
+            "variance_sum": 1.0
+          },
+          {
+            "candidate_count": 131328,
+            "epsilon": 0.8,
+            "n": 512,
+            "objective": 0.772110925032206,
+            "runtime_seconds": 38.89837487204932,
+            "support": [
+              510,
+              511
+            ],
+            "support_cap": 2,
+            "variance_sum": 1.0
+          }
+        ],
+        "status": "VERIFIED"
+      },
+      "status": "VERIFIED"
+    },
+    "claim_2": {
+      "independent_checker": {
+        "checker": "independent rational inequality and Gaussian absolute moment",
+        "max_variance_Y1_minus_Y2": "2",
+        "passed": true,
+        "required_lower": "19/10",
+        "strict_separation": 1.3358104164522437,
+        "symbolic_identity": "1/4-v(1-v)=(2v-1)^2/4>=0",
+        "zero_mean_expected_max_upper": 0.5641895835477563
+      },
+      "negative_control": {
+        "attainable_output": 0.5641895835477563,
+        "attained_by": "Sigma=[[1/2,-1/2],[-1/2,1/2]]",
+        "control": "repair the theorem by requiring input means mu=(0,0)",
+        "exact_zero_mean_optimum": 0.5641895835477563,
+        "required_output_for_epsilon": 0.4641895835477563,
+        "status": "REJECTED_AS_COUNTEREXAMPLE"
+      },
+      "primary": {
+        "claim": "Theorem 1.2 exact literal mean/output quantifiers",
+        "input": {
+          "epsilon": "1/10",
+          "feasible_covariance": [
+            [
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1"
+            ]
+          ],
+          "means": [
+            "2",
+            "0"
+          ],
+          "n": 2,
+          "positive_semidefinite": true,
+          "trace": "1"
+        },
+        "input_opt_lower_bound": "2",
+        "literal_output_distribution": "N(0,Sigma_hat)",
+        "proof": [
+          "E max(Y1,Y2) = E|Y1-Y2|/2 for zero means.",
+          "Var(Y1-Y2)=1-2*Sigma12 under trace(Sigma)=1.",
+          "PSD gives Sigma12 >= -sqrt(v*(1-v)), v=Sigma11.",
+          "v*(1-v)<=1/4, so Var(Y1-Y2)<=2.",
+          "Therefore E max(Y1,Y2)<=1/sqrt(pi)<1<19/10.",
+          "But feasible input covariance diag(0,1) has X1=2 pointwise, so OPT>=2."
+        ],
+        "required_theorem_output_lower_bound": "19/10",
+        "scope": "This falsifies Theorem 1.2 as written. It does not falsify a repaired theorem whose CorrVarAlloc input is explicitly zero-mean.",
+        "status": "FALSIFIED",
+        "universal_zero_mean_output_upper_bound": 0.5641895835477563
+      },
+      "status": "FALSIFIED"
+    },
+    "claim_3": {
+      "independent_checker": {
+        "checker": "384-node Gauss-Legendre table plus exhaustive subsets",
+        "passed": true,
+        "rows": [
+          {
+            "absolute_difference": 1.4077627952246985e-13,
+            "every_greedy_step_independently_maximal": true,
+            "greedy_ratio": 1.0,
+            "implementation_objective": 1.5957691216057315,
+            "independent_level_optimum": 1.5957691216055907,
+            "independent_objective": 1.5957691216055907,
+            "k": 0,
+            "passed": true,
+            "selected": [
+              2
+            ]
+          },
+          {
+            "absolute_difference": 1.9806378759312793e-13,
+            "every_greedy_step_independently_maximal": true,
+            "greedy_ratio": 1.0,
+            "implementation_objective": 2.5004772412411436,
+            "independent_level_optimum": 2.5004772412409455,
+            "independent_objective": 2.5004772412409455,
+            "k": 1,
+            "passed": true,
+            "selected": [
+              2,
+              3,
+              6,
+              1
+            ]
+          },
+          {
+            "absolute_difference": 9.836575998178887e-14,
+            "every_greedy_step_independently_maximal": true,
+            "greedy_ratio": 1.0,
+            "implementation_objective": 1.7841142494844342,
+            "independent_level_optimum": 1.7841142494843358,
+            "independent_objective": 1.7841142494843358,
+            "k": 2,
+            "passed": true,
+            "selected": [
+              2,
+              3,
+              6,
+              1,
+              7,
+              4,
+              0,
+              5
+            ]
+          },
+          {
+            "absolute_difference": 4.9182879990894435e-14,
+            "every_greedy_step_independently_maximal": true,
+            "greedy_ratio": 1.0,
+            "implementation_objective": 0.8920571247422171,
+            "independent_level_optimum": 0.8920571247421679,
+            "independent_objective": 0.8920571247421679,
+            "k": 3,
+            "passed": true,
+            "selected": [
+              2,
+              3,
+              6,
+              1,
+              7,
+              4,
+              0,
+              5
+            ]
+          }
+        ],
+        "tail_audit": "all integrals truncated at z=12; omitted Gaussian tail <1e-32"
+      },
+      "negative_control": {
+        "control": "replace exact greedy marginal by fixed vertex order",
+        "fixed_order_objective": 0.3989422804014327,
+        "greedy_objective": 50.66566961098196,
+        "instance": "128-vertex star with center at index 127, k=0",
+        "ratio": 0.007874015748031496,
+        "required_level_ratio": 0.6321205588285577,
+        "status": "REJECTED_BAD_SUBSTITUTE"
+      },
+      "primary": {
+        "algorithm_contract": {
+          "cardinality": "min(4^k,n)",
+          "levels": "integer k=0,...,floor(log2(n))",
+          "return": "highest-objective level",
+          "selection": "exact current-objective greedy marginal",
+          "variance_each": "4^(-k)"
+        },
+        "claim": "Theorem 1.3 / faithful Algorithm 3 under its proof assumptions",
+        "exhaustive_small_domain": [
+          {
+            "cardinality": 1,
+            "exact_level_objective": 1.5957691216057315,
+            "greedy_objective": 1.5957691216057315,
+            "k": 0,
+            "nemhauser_threshold": 0.6321205588285577,
+            "passed": true,
+            "ratio": 1.0
+          },
+          {
+            "cardinality": 4,
+            "exact_level_objective": 2.5004772412411436,
+            "greedy_objective": 2.5004772412411436,
+            "k": 1,
+            "nemhauser_threshold": 0.6321205588285577,
+            "passed": true,
+            "ratio": 1.0
+          },
+          {
+            "cardinality": 8,
+            "exact_level_objective": 1.7841142494844342,
+            "greedy_objective": 1.7841142494844342,
+            "k": 2,
+            "nemhauser_threshold": 0.6321205588285577,
+            "passed": true,
+            "ratio": 1.0
+          },
+          {
+            "cardinality": 8,
+            "exact_level_objective": 0.8920571247422171,
+            "greedy_objective": 0.8920571247422171,
+            "k": 3,
+            "nemhauser_threshold": 0.6321205588285577,
+            "passed": true,
+            "ratio": 1.0
+          }
+        ],
+        "proof_certificate": {
+          "grouping": "K+2 variance groups; max <= sum of positive group maxima",
+          "machine_checks": {
+            "every_level_budget_feasible": true,
+            "greedy_factor_exhaustive_small_domain": true,
+            "star_first_choice_is_center": true
+          },
+          "mean_reduction": "paper proof requires non-negative means; experiments use exact zero means",
+          "pigeonhole": "one of K+1 retained groups contributes Omega(OPT/log n)",
+          "rounding": "Lemma 2.6: power-of-four variance rounding loses <=2",
+          "submodular_greedy": "Lemma 2.7 plus Nemhauser gives factor 1-1/e",
+          "tail": "Lemma 2.1 makes variance<1/n^2 contribution negligible versus uniform baseline"
+        },
+        "runtime_seconds": 7.490786676993594,
+        "scaling": [
+          {
+            "best_k": 3,
+            "feasible": true,
+            "m": 192,
+            "n": 64,
+            "objective": 15.79730833933718,
+            "runtime_seconds": 0.007476669969037175,
+            "selected_count": 64,
+            "total_variance": 1.0
+          },
+          {
+            "best_k": 4,
+            "feasible": true,
+            "m": 768,
+            "n": 256,
+            "objective": 31.59461667867436,
+            "runtime_seconds": 0.04274713294580579,
+            "selected_count": 256,
+            "total_variance": 1.0
+          },
+          {
+            "best_k": 5,
+            "feasible": true,
+            "m": 3072,
+            "n": 1024,
+            "objective": 63.18923335734872,
+            "runtime_seconds": 0.2473926639650017,
+            "selected_count": 1024,
+            "total_variance": 1.0
+          },
+          {
+            "best_k": 6,
+            "feasible": true,
+            "m": 12288,
+            "n": 4096,
+            "objective": 126.37846671469744,
+            "runtime_seconds": 1.0850830129347742,
+            "selected_count": 4096,
+            "total_variance": 1.0
+          },
+          {
+            "best_k": 7,
+            "feasible": true,
+            "m": 49152,
+            "n": 16384,
+            "objective": 252.75693342939488,
+            "runtime_seconds": 6.026901347911917,
+            "selected_count": 16384,
+            "total_variance": 1.0
+          }
+        ],
+        "star_best": {
+          "best_k": 0,
+          "first_selected": 127,
+          "m": 127,
+          "n": 128,
+          "objective": 50.66566961098197
+        },
+        "status": "VERIFIED"
+      },
+      "status": "VERIFIED"
+    },
+    "claim_4": {
+      "independent_checker": {
+        "checker": "independent CSV rational-arithmetic checker",
+        "last_ratio": "1/1024",
+        "passed": true,
+        "reason": "N_large/(1/p_n) <= n/n^2 = 1/n tends to zero.",
+        "row_count": 8
+      },
+      "negative_control": {
+        "control": "fixed p=1/4",
+        "reason": "The cardinality cap n is compatible with Theta(1/p)=Theta(4).",
+        "rows": [
+          {
+            "m": 8,
+            "max_over_one_over_p": "8/4",
+            "max_possible_variables": 8,
+            "n": 8,
+            "one_over_p": 4,
+            "p": "1/4"
+          },
+          {
+            "m": 16,
+            "max_over_one_over_p": "16/4",
+            "max_possible_variables": 16,
+            "n": 16,
+            "one_over_p": 4,
+            "p": "1/4"
+          },
+          {
+            "m": 32,
+            "max_over_one_over_p": "32/4",
+            "max_possible_variables": 32,
+            "n": 32,
+            "one_over_p": 4,
+            "p": "1/4"
+          },
+          {
+            "m": 64,
+            "max_over_one_over_p": "64/4",
+            "max_possible_variables": 64,
+            "n": 64,
+            "one_over_p": 4,
+            "p": "1/4"
+          },
+          {
+            "m": 128,
+            "max_over_one_over_p": "128/4",
+            "max_possible_variables": 128,
+            "n": 128,
+            "one_over_p": 4,
+            "p": "1/4"
+          },
+          {
+            "m": 256,
+            "max_over_one_over_p": "256/4",
+            "max_possible_variables": 256,
+            "n": 256,
+            "one_over_p": 4,
+            "p": "1/4"
+          },
+          {
+            "m": 512,
+            "max_over_one_over_p": "512/4",
+            "max_possible_variables": 512,
+            "n": 512,
+            "one_over_p": 4,
+            "p": "1/4"
+          },
+          {
+            "m": 1024,
+            "max_over_one_over_p": "1024/4",
+            "max_possible_variables": 1024,
+            "n": 1024,
+            "one_over_p": 4,
+            "p": "1/4"
+          }
+        ],
+        "status": "REJECTED_AS_COUNTEREXAMPLE"
+      },
+      "primary": {
+        "assumption_audit": {
+          "erdos_renyi_probability": "p_n=n^-2 in (0,1)",
+          "m_sequence": "m_n=n",
+          "m_to_infinity": true,
+          "n_to_infinity": true,
+          "number_of_variables": "n"
+        },
+        "claim": "Theorem 1.6 exact unrestricted-p quantifier",
+        "proof": {
+          "absolute_cardinality_cap": "N_large <= n",
+          "demanded_scale": "Theta(1/p_n)=Theta(n^2)",
+          "ratio": "N_large/(1/p_n) <= 1/n -> 0",
+          "symbolic_limit": "lim_{n->infinity} n/(1/p_n) = lim 1/n = 0"
+        },
+        "rows": [
+          {
+            "m": 8,
+            "max_over_one_over_p": "1/8",
+            "max_possible_variables": 8,
+            "n": 8,
+            "one_over_p": 64,
+            "p": "1/64"
+          },
+          {
+            "m": 16,
+            "max_over_one_over_p": "1/16",
+            "max_possible_variables": 16,
+            "n": 16,
+            "one_over_p": 256,
+            "p": "1/256"
+          },
+          {
+            "m": 32,
+            "max_over_one_over_p": "1/32",
+            "max_possible_variables": 32,
+            "n": 32,
+            "one_over_p": 1024,
+            "p": "1/1024"
+          },
+          {
+            "m": 64,
+            "max_over_one_over_p": "1/64",
+            "max_possible_variables": 64,
+            "n": 64,
+            "one_over_p": 4096,
+            "p": "1/4096"
+          },
+          {
+            "m": 128,
+            "max_over_one_over_p": "1/128",
+            "max_possible_variables": 128,
+            "n": 128,
+            "one_over_p": 16384,
+            "p": "1/16384"
+          },
+          {
+            "m": 256,
+            "max_over_one_over_p": "1/256",
+            "max_possible_variables": 256,
+            "n": 256,
+            "one_over_p": 65536,
+            "p": "1/65536"
+          },
+          {
+            "m": 512,
+            "max_over_one_over_p": "1/512",
+            "max_possible_variables": 512,
+            "n": 512,
+            "one_over_p": 262144,
+            "p": "1/262144"
+          },
+          {
+            "m": 1024,
+            "max_over_one_over_p": "1/1024",
+            "max_possible_variables": 1024,
+            "n": 1024,
+            "one_over_p": 1048576,
+            "p": "1/1048576"
+          }
+        ],
+        "status": "FALSIFIED"
+      },
+      "status": "FALSIFIED"
+    },
+    "claim_5": {
+      "independent_checker": {
+        "checker": "256-node Gauss-Legendre integration on [0,12]",
+        "finite_values": true,
+        "passed": true,
+        "rate": "epsilon*sqrt(log(1/epsilon))",
+        "rows": [
+          {
+            "absolute_difference": 1.1102230246251565e-16,
+            "adaptive_quadrature": 0.44149813082744355,
+            "epsilon": 0.25,
+            "fixed_node_quadrature": 0.44149813082744344,
+            "m": 16,
+            "passed": true
+          },
+          {
+            "absolute_difference": 5.551115123125783e-17,
+            "adaptive_quadrature": 0.29296668313492996,
+            "epsilon": 0.125,
+            "fixed_node_quadrature": 0.2929666831349299,
+            "m": 64,
+            "passed": true
+          },
+          {
+            "absolute_difference": 5.551115123125783e-17,
+            "adaptive_quadrature": 0.17667895493370123,
+            "epsilon": 0.0625,
+            "fixed_node_quadrature": 0.17667895493370117,
+            "m": 256,
+            "passed": true
+          },
+          {
+            "absolute_difference": 4.163336342344337e-17,
+            "adaptive_quadrature": 0.10150748754298165,
+            "epsilon": 0.03125,
+            "fixed_node_quadrature": 0.10150748754298161,
+            "m": 1024,
+            "passed": true
+          },
+          {
+            "absolute_difference": 1.3877787807814457e-17,
+            "adaptive_quadrature": 0.0566575340276429,
+            "epsilon": 0.015625,
+            "fixed_node_quadrature": 0.056657534027642883,
+            "m": 4096,
+            "passed": true
+          }
+        ],
+        "tail_audit": "m*P[Z>12] < 1e-28 for all tested m"
+      },
+      "negative_control": {
+        "control": "remove sum_i variance_i <= 1",
+        "reason": "Without the total-variance budget, the maximum retains an uncontrolled sqrt(log m) factor.",
+        "rows": [
+          {
+            "asymptotic_scale_without_budget": "epsilon*sqrt(2*log(m)) = sqrt(2)*epsilon*log(1/epsilon)^(3/2)",
+            "epsilon": 0.25,
+            "log_m": 6.823080299271107,
+            "log_total_variance": 4.050491577031325,
+            "total_variance_exceeds_one": true
+          },
+          {
+            "asymptotic_scale_without_budget": "epsilon*sqrt(2*log(m)) = sqrt(2)*epsilon*log(1/epsilon)^(3/2)",
+            "epsilon": 0.125,
+            "log_m": 15.2299902287406,
+            "log_total_variance": 11.071107145380928,
+            "total_variance_exceeds_one": true
+          },
+          {
+            "asymptotic_scale_without_budget": "epsilon*sqrt(2*log(m)) = sqrt(2)*epsilon*log(1/epsilon)^(3/2)",
+            "epsilon": 0.0625,
+            "log_m": 29.631343894010826,
+            "log_total_variance": 24.086166449531262,
+            "total_variance_exceeds_one": true
+          },
+          {
+            "asymptotic_scale_without_budget": "epsilon*sqrt(2*log(m)) = sqrt(2)*epsilon*log(1/epsilon)^(3/2)",
+            "epsilon": 0.03125,
+            "log_m": 52.02528920701536,
+            "log_total_variance": 45.09381740141591,
+            "total_variance_exceeds_one": true
+          },
+          {
+            "asymptotic_scale_without_budget": "epsilon*sqrt(2*log(m)) = sqrt(2)*epsilon*log(1/epsilon)^(3/2)",
+            "epsilon": 0.015625,
+            "log_m": 84.40997407968777,
+            "log_total_variance": 76.09220791296843,
+            "total_variance_exceeds_one": true
+          }
+        ],
+        "status": "REJECTED_INVALID_ASSUMPTIONS"
+      },
+      "primary": {
+        "claim": "Lemma 2.1 under the standard epsilon->0 big-O reading",
+        "nonzero_saturating_family": [
+          {
+            "epsilon": 0.25,
+            "expected_positive_max": 0.44149813082744355,
+            "explicit_upper_bound": 1.1315590353548781,
+            "m": 16,
+            "observed_over_rate": 1.499895949192639,
+            "passed": true,
+            "variance_each": 0.0625,
+            "variance_sum": 1.0
+          },
+          {
+            "epsilon": 0.125,
+            "expected_positive_max": 0.29296668313492996,
+            "explicit_upper_bound": 0.6929355626138504,
+            "m": 64,
+            "observed_over_rate": 1.6253049695932102,
+            "passed": true,
+            "variance_each": 0.015625,
+            "variance_sum": 1.0
+          },
+          {
+            "epsilon": 0.0625,
+            "expected_positive_max": 0.17667895493370123,
+            "explicit_upper_bound": 0.4000665336061713,
+            "m": 256,
+            "observed_over_rate": 1.6977044154547187,
+            "passed": true,
+            "variance_each": 0.00390625,
+            "variance_sum": 1.0
+          },
+          {
+            "epsilon": 0.03125,
+            "expected_positive_max": 0.10150748754298165,
+            "explicit_upper_bound": 0.22364399116652575,
+            "m": 1024,
+            "observed_over_rate": 1.7448187682925398,
+            "passed": true,
+            "variance_each": 0.0009765625,
+            "variance_sum": 1.0
+          },
+          {
+            "epsilon": 0.015625,
+            "expected_positive_max": 0.0566575340276429,
+            "explicit_upper_bound": 0.12249485881239226,
+            "m": 4096,
+            "observed_over_rate": 1.7780717688864462,
+            "passed": true,
+            "variance_each": 0.000244140625,
+            "variance_sum": 1.0
+          }
+        ],
+        "proof_certificates": [
+          {
+            "bound": 1.1315590353548781,
+            "derivation": "E[M] <= (E[(Z_+)^q] sum_i v_i^(q/2))^(1/q) <= sqrt(q) epsilon^(1-2/q) = e*sqrt(2)*epsilon*sqrt(log(1/epsilon))",
+            "epsilon": 0.25,
+            "explicit_constant": 3.844231028159117,
+            "q": 2.772588722239781,
+            "q_at_least_2": true
+          },
+          {
+            "bound": 0.6929355626138504,
+            "derivation": "E[M] <= (E[(Z_+)^q] sum_i v_i^(q/2))^(1/q) <= sqrt(q) epsilon^(1-2/q) = e*sqrt(2)*epsilon*sqrt(log(1/epsilon))",
+            "epsilon": 0.125,
+            "explicit_constant": 3.844231028159117,
+            "q": 4.1588830833596715,
+            "q_at_least_2": true
+          },
+          {
+            "bound": 0.4000665336061713,
+            "derivation": "E[M] <= (E[(Z_+)^q] sum_i v_i^(q/2))^(1/q) <= sqrt(q) epsilon^(1-2/q) = e*sqrt(2)*epsilon*sqrt(log(1/epsilon))",
+            "epsilon": 0.0625,
+            "explicit_constant": 3.844231028159117,
+            "q": 5.545177444479562,
+            "q_at_least_2": true
+          },
+          {
+            "bound": 0.22364399116652575,
+            "derivation": "E[M] <= (E[(Z_+)^q] sum_i v_i^(q/2))^(1/q) <= sqrt(q) epsilon^(1-2/q) = e*sqrt(2)*epsilon*sqrt(log(1/epsilon))",
+            "epsilon": 0.03125,
+            "explicit_constant": 3.844231028159117,
+            "q": 6.931471805599453,
+            "q_at_least_2": true
+          },
+          {
+            "bound": 0.12249485881239226,
+            "derivation": "E[M] <= (E[(Z_+)^q] sum_i v_i^(q/2))^(1/q) <= sqrt(q) epsilon^(1-2/q) = e*sqrt(2)*epsilon*sqrt(log(1/epsilon))",
+            "epsilon": 0.015625,
+            "explicit_constant": 3.844231028159117,
+            "q": 8.317766166719343,
+            "q_at_least_2": true
+          }
+        ],
+        "proof_constant": 3.844231028159117,
+        "status": "VERIFIED",
+        "valid_range": "0 < epsilon <= exp(-1)"
+      },
+      "status": "VERIFIED"
+    },
+    "claim_6": {
+      "independent_checker": {
+        "checker": "independent CSV parse and finite differences",
+        "passed": true,
+        "rows": [
+          {
+            "passed": true,
+            "pixel_second_differences": [
+              142.0,
+              41.0,
+              7.5,
+              12.0,
+              9.0,
+              9.0
+            ],
+            "pixel_y": [
+              981.0,
+              698.5,
+              558.0,
+              458.5,
+              366.5,
+              286.5,
+              215.5,
+              153.5
+            ],
+            "series": "independent"
+          },
+          {
+            "passed": true,
+            "pixel_second_differences": [
+              162.0,
+              63.5,
+              21.5,
+              9.0,
+              1.5,
+              -3.0
+            ],
+            "pixel_y": [
+              981.0,
+              653.5,
+              488.0,
+              386.0,
+              305.5,
+              234.0,
+              164.0,
+              91.0
+            ],
+            "series": "negative"
+          }
+        ]
+      },
+      "negative_control": {
+        "control": "artificial visibly non-concave pixel series",
+        "pixel_y": [
+          1000.0,
+          800.0,
+          650.0,
+          530.0,
+          400.0
+        ],
+        "second_differences": [
+          50.0,
+          30.0,
+          -10.0
+        ],
+        "status": "REJECTED_NONCONCAVE_SERIES"
+      },
+      "primary": {
+        "all_four_routes_complete": true,
+        "blocker": "The public paper omits m, seeds, sample count, optimizer, stopping rule, and raw values, so its exact Monte Carlo experiment cannot be regenerated or statistically compared.",
+        "claim": "Figures 1-2 Monte Carlo illustration",
+        "routes": [
+          {
+            "completed": true,
+            "conclusion": "exact regeneration is under-specified",
+            "member_count": 19,
+            "missing_parameters": [
+              "number of sets m",
+              "random seeds",
+              "Monte Carlo sample count",
+              "optimizer and stopping rule",
+              "raw numerical values"
+            ],
+            "raw_data_files": [],
+            "route": "source-bundle completeness audit",
+            "simulation_scripts": [],
+            "source_sha256": "459cf66ee46d8c78ca931343dbf1d13729d3e4ce62ab1179c93aa34212b7f2af",
+            "source_url": "https://export.arxiv.org/e-print/2502.18463",
+            "suffixes": [
+              "bbl",
+              "bib",
+              "cls",
+              "png",
+              "sty",
+              "tex",
+              "xxx"
+            ]
+          },
+          {
+            "completed": true,
+            "displayed_concentration": true,
+            "independent_display_concave": true,
+            "independent_pixel_second_differences": [
+              142.0,
+              41.0,
+              7.5,
+              12.0,
+              9.0,
+              9.0
+            ],
+            "p_0.25_independent_dominant_levels": [
+              {
+                "exact_color_pixel_count": 1504,
+                "pixel_y": 688
+              }
+            ],
+            "p_1.0_independent_dominant_levels": [
+              {
+                "exact_color_pixel_count": 653,
+                "pixel_y": 354
+              },
+              {
+                "exact_color_pixel_count": 653,
+                "pixel_y": 990
+              }
+            ],
+            "payoff_pixel_y": {
+              "independent_orange_y": [
+                981.0,
+                698.5,
+                558.0,
+                458.5,
+                366.5,
+                286.5,
+                215.5,
+                153.5
+              ],
+              "negative_green_y": [
+                981.0,
+                653.5,
+                488.0,
+                386.0,
+                305.5,
+                234.0,
+                164.0,
+                91.0
+              ]
+            },
+            "route": "deterministic pixel extraction from the hashed paper figures"
+          },
+          {
+            "completed": true,
+            "exact_derivation": "Apply max(u,b)+max(u,c)>=max(u,b,c)+u with u=max(a,d), then repeat with u=max(b,d), max(c,d), and sum.",
+            "finite_sanity_cases": 2401,
+            "passed": true,
+            "route": "independent theorem-proof reconstruction",
+            "scope": "This certifies the max inequality used by the independent concavity proof, not the unspecified correlated simulations."
+          },
+          {
+            "candidate_violation_pixels": -3.0,
+            "completed": true,
+            "negative_correlation_pixel_second_differences": [
+              162.0,
+              63.5,
+              21.5,
+              9.0,
+              1.5,
+              -3.0
+            ],
+            "reason": "The final second difference is -3 pixels, comparable to line width; without raw values, seeds, or uncertainty it cannot be promoted to an assumption-satisfying numerical counterexample.",
+            "route": "mandatory falsification attempt on displayed correlated concavity",
+            "valid_falsification": false
+          }
+        ],
+        "status": "BLOCKED",
+        "what_would_unblock": "Authors' simulation code/configuration and raw per-seed outputs, or a complete statement fixing all omitted parameters."
+      },
+      "status": "BLOCKED"
+    }
+  },
+  "compute": {
+    "affinity_cpus": 64,
+    "designed_worker_count": 1,
+    "platform": "Linux-6.12.90-120.164.amzn2023.x86_64-x86_64-with-glibc2.36",
+    "python": "3.12.12",
+    "visible_logical_cpus": 64
+  },
+  "git_sha": "reported-by-orx-run-metadata",
+  "runtime_seconds": 54.625654894975014,
+  "schema": "openresearch.claim-suite.v1",
+  "seed": null,
+  "suite_passed": true
+}

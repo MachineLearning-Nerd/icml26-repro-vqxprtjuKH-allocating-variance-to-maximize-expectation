@@ -13,6 +13,7 @@ from reproduction.checkers.claim3_checker import check_algorithm3
 from reproduction.checkers.claim1_checker import check_algorithm1
 from reproduction.checkers.claim2_checker import check_counterexample as check_claim2
 from reproduction.checkers.claim6_checker import check_digitized_payoff
+from reproduction.release_audit import audit_release_candidate
 from reproduction.claims.claim1_algorithm1 import (
     verify_algorithm1,
     verify_negative_control as verify_algorithm1_negative_control,
@@ -78,6 +79,7 @@ def main() -> int:
     checker6 = check_digitized_payoff()
     control6 = verify_figure_negative_control()
     control6_rejected = control6["status"] == "REJECTED_NONCONCAVE_SERIES"
+    release_audit = audit_release_candidate()
     passed = (
         claim4["status"] == "FALSIFIED"
         and bool(checker4["passed"])
@@ -98,6 +100,7 @@ def main() -> int:
         and bool(claim6["all_four_routes_complete"])
         and bool(checker6["passed"])
         and control6_rejected
+        and bool(release_audit["passed"])
     )
     result = {
         "schema": "openresearch.claim-suite.v1",
@@ -142,6 +145,7 @@ def main() -> int:
                 "negative_control": control5,
             },
         },
+        "release_audit": release_audit,
         "suite_passed": passed,
         "runtime_seconds": time.perf_counter() - started,
     }

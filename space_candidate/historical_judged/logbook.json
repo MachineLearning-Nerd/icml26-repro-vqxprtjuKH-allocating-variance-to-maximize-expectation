@@ -8,51 +8,39 @@
     "icml2026-repro",
     "paper-vqxprtjuKH"
   ],
-  "updated_at": "2026-07-25T06:24:37+00:00",
+  "updated_at": "2026-07-24T20:19:24+00:00",
   "root": {
     "slug": "index",
     "title": "Repro - Allocating Variance to Maximize Expectation",
     "file": "pages/index.md",
     "children": [
       {
-        "slug": "current-verification",
-        "title": "Current verification",
-        "file": "pages/current-verification/page.md",
-        "children": []
-      },
-      {
-        "slug": "release-audit",
-        "title": "Release audit and score forecast",
-        "file": "pages/release-audit/page.md",
-        "children": []
-      },
-      {
         "slug": "overview",
-        "title": "Historical rejected baseline — Overview",
+        "title": "Overview",
         "file": "pages/overview/page.md",
         "children": []
       },
       {
         "slug": "claims",
-        "title": "Historical rejected baseline — Claims",
+        "title": "Claims",
         "file": "pages/claims/page.md",
         "children": []
       },
       {
         "slug": "evidence",
-        "title": "Historical rejected baseline — Evidence",
+        "title": "Evidence",
         "file": "pages/evidence/page.md",
         "children": []
       },
       {
         "slug": "verification-run",
-        "title": "Historical rejected baseline — Verification run",
+        "title": "Verification run",
         "file": "pages/verification-run/page.md",
         "children": []
       },
       {
         "slug": "conclusion",
-        "title": "Historical rejected baseline — Conclusion",
+        "title": "Conclusion",
         "file": "pages/conclusion/page.md",
         "children": []
       }

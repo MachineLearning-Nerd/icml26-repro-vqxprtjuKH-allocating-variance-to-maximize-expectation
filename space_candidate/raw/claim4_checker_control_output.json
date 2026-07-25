@@ -1,0 +1,164 @@
+{
+  "independent_checker": {
+    "checker": "independent CSV rational-arithmetic checker",
+    "last_ratio": "1/1024",
+    "passed": true,
+    "reason": "N_large/(1/p_n) <= n/n^2 = 1/n tends to zero.",
+    "row_count": 8
+  },
+  "negative_control": {
+    "control": "fixed p=1/4",
+    "reason": "The cardinality cap n is compatible with Theta(1/p)=Theta(4).",
+    "rows": [
+      {
+        "m": 8,
+        "max_over_one_over_p": "8/4",
+        "max_possible_variables": 8,
+        "n": 8,
+        "one_over_p": 4,
+        "p": "1/4"
+      },
+      {
+        "m": 16,
+        "max_over_one_over_p": "16/4",
+        "max_possible_variables": 16,
+        "n": 16,
+        "one_over_p": 4,
+        "p": "1/4"
+      },
+      {
+        "m": 32,
+        "max_over_one_over_p": "32/4",
+        "max_possible_variables": 32,
+        "n": 32,
+        "one_over_p": 4,
+        "p": "1/4"
+      },
+      {
+        "m": 64,
+        "max_over_one_over_p": "64/4",
+        "max_possible_variables": 64,
+        "n": 64,
+        "one_over_p": 4,
+        "p": "1/4"
+      },
+      {
+        "m": 128,
+        "max_over_one_over_p": "128/4",
+        "max_possible_variables": 128,
+        "n": 128,
+        "one_over_p": 4,
+        "p": "1/4"
+      },
+      {
+        "m": 256,
+        "max_over_one_over_p": "256/4",
+        "max_possible_variables": 256,
+        "n": 256,
+        "one_over_p": 4,
+        "p": "1/4"
+      },
+      {
+        "m": 512,
+        "max_over_one_over_p": "512/4",
+        "max_possible_variables": 512,
+        "n": 512,
+        "one_over_p": 4,
+        "p": "1/4"
+      },
+      {
+        "m": 1024,
+        "max_over_one_over_p": "1024/4",
+        "max_possible_variables": 1024,
+        "n": 1024,
+        "one_over_p": 4,
+        "p": "1/4"
+      }
+    ],
+    "status": "REJECTED_AS_COUNTEREXAMPLE"
+  },
+  "primary": {
+    "assumption_audit": {
+      "erdos_renyi_probability": "p_n=n^-2 in (0,1)",
+      "m_sequence": "m_n=n",
+      "m_to_infinity": true,
+      "n_to_infinity": true,
+      "number_of_variables": "n"
+    },
+    "claim": "Theorem 1.6 exact unrestricted-p quantifier",
+    "proof": {
+      "absolute_cardinality_cap": "N_large <= n",
+      "demanded_scale": "Theta(1/p_n)=Theta(n^2)",
+      "ratio": "N_large/(1/p_n) <= 1/n -> 0",
+      "symbolic_limit": "lim_{n->infinity} n/(1/p_n) = lim 1/n = 0"
+    },
+    "rows": [
+      {
+        "m": 8,
+        "max_over_one_over_p": "1/8",
+        "max_possible_variables": 8,
+        "n": 8,
+        "one_over_p": 64,
+        "p": "1/64"
+      },
+      {
+        "m": 16,
+        "max_over_one_over_p": "1/16",
+        "max_possible_variables": 16,
+        "n": 16,
+        "one_over_p": 256,
+        "p": "1/256"
+      },
+      {
+        "m": 32,
+        "max_over_one_over_p": "1/32",
+        "max_possible_variables": 32,
+        "n": 32,
+        "one_over_p": 1024,
+        "p": "1/1024"
+      },
+      {
+        "m": 64,
+        "max_over_one_over_p": "1/64",
+        "max_possible_variables": 64,
+        "n": 64,
+        "one_over_p": 4096,
+        "p": "1/4096"
+      },
+      {
+        "m": 128,
+        "max_over_one_over_p": "1/128",
+        "max_possible_variables": 128,
+        "n": 128,
+        "one_over_p": 16384,
+        "p": "1/16384"
+      },
+      {
+        "m": 256,
+        "max_over_one_over_p": "1/256",
+        "max_possible_variables": 256,
+        "n": 256,
+        "one_over_p": 65536,
+        "p": "1/65536"
+      },
+      {
+        "m": 512,
+        "max_over_one_over_p": "1/512",
+        "max_possible_variables": 512,
+        "n": 512,
+        "one_over_p": 262144,
+        "p": "1/262144"
+      },
+      {
+        "m": 1024,
+        "max_over_one_over_p": "1/1024",
+        "max_possible_variables": 1024,
+        "n": 1024,
+        "one_over_p": 1048576,
+        "p": "1/1048576"
+      }
+    ],
+    "status": "FALSIFIED"
+  },
+  "status": "FALSIFIED"
+}

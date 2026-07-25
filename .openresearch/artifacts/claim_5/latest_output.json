@@ -1,0 +1,194 @@
+{
+  "independent_checker": {
+    "checker": "256-node Gauss-Legendre integration on [0,12]",
+    "finite_values": true,
+    "passed": true,
+    "rate": "epsilon*sqrt(log(1/epsilon))",
+    "rows": [
+      {
+        "absolute_difference": 1.1102230246251565E-16,
+        "adaptive_quadrature": 0.44149813082744355,
+        "epsilon": 0.25,
+        "fixed_node_quadrature": 0.44149813082744344,
+        "m": 16,
+        "passed": true
+      },
+      {
+        "absolute_difference": 5.551115123125783E-17,
+        "adaptive_quadrature": 0.29296668313492996,
+        "epsilon": 0.125,
+        "fixed_node_quadrature": 0.2929666831349299,
+        "m": 64,
+        "passed": true
+      },
+      {
+        "absolute_difference": 5.551115123125783E-17,
+        "adaptive_quadrature": 0.17667895493370123,
+        "epsilon": 0.0625,
+        "fixed_node_quadrature": 0.17667895493370117,
+        "m": 256,
+        "passed": true
+      },
+      {
+        "absolute_difference": 4.163336342344337E-17,
+        "adaptive_quadrature": 0.10150748754298165,
+        "epsilon": 0.03125,
+        "fixed_node_quadrature": 0.10150748754298161,
+        "m": 1024,
+        "passed": true
+      },
+      {
+        "absolute_difference": 1.3877787807814457E-17,
+        "adaptive_quadrature": 0.0566575340276429,
+        "epsilon": 0.015625,
+        "fixed_node_quadrature": 0.056657534027642883,
+        "m": 4096,
+        "passed": true
+      }
+    ],
+    "tail_audit": "m*P[Z>12] < 1e-28 for all tested m"
+  },
+  "negative_control": {
+    "control": "remove sum_i variance_i <= 1",
+    "reason": "Without the total-variance budget, the maximum retains an uncontrolled sqrt(log m) factor.",
+    "rows": [
+      {
+        "asymptotic_scale_without_budget": "epsilon*sqrt(2*log(m)) = sqrt(2)*epsilon*log(1/epsilon)^(3/2)",
+        "epsilon": 0.25,
+        "log_m": 6.823080299271107,
+        "log_total_variance": 4.050491577031325,
+        "total_variance_exceeds_one": true
+      },
+      {
+        "asymptotic_scale_without_budget": "epsilon*sqrt(2*log(m)) = sqrt(2)*epsilon*log(1/epsilon)^(3/2)",
+        "epsilon": 0.125,
+        "log_m": 15.2299902287406,
+        "log_total_variance": 11.071107145380928,
+        "total_variance_exceeds_one": true
+      },
+      {
+        "asymptotic_scale_without_budget": "epsilon*sqrt(2*log(m)) = sqrt(2)*epsilon*log(1/epsilon)^(3/2)",
+        "epsilon": 0.0625,
+        "log_m": 29.631343894010826,
+        "log_total_variance": 24.086166449531262,
+        "total_variance_exceeds_one": true
+      },
+      {
+        "asymptotic_scale_without_budget": "epsilon*sqrt(2*log(m)) = sqrt(2)*epsilon*log(1/epsilon)^(3/2)",
+        "epsilon": 0.03125,
+        "log_m": 52.02528920701536,
+        "log_total_variance": 45.09381740141591,
+        "total_variance_exceeds_one": true
+      },
+      {
+        "asymptotic_scale_without_budget": "epsilon*sqrt(2*log(m)) = sqrt(2)*epsilon*log(1/epsilon)^(3/2)",
+        "epsilon": 0.015625,
+        "log_m": 84.40997407968777,
+        "log_total_variance": 76.09220791296843,
+        "total_variance_exceeds_one": true
+      }
+    ],
+    "status": "REJECTED_INVALID_ASSUMPTIONS"
+  },
+  "primary": {
+    "claim": "Lemma 2.1 under the standard epsilon->0 big-O reading",
+    "nonzero_saturating_family": [
+      {
+        "epsilon": 0.25,
+        "expected_positive_max": 0.44149813082744355,
+        "explicit_upper_bound": 1.1315590353548781,
+        "m": 16,
+        "observed_over_rate": 1.499895949192639,
+        "passed": true,
+        "variance_each": 0.0625,
+        "variance_sum": 1.0
+      },
+      {
+        "epsilon": 0.125,
+        "expected_positive_max": 0.29296668313492996,
+        "explicit_upper_bound": 0.6929355626138504,
+        "m": 64,
+        "observed_over_rate": 1.6253049695932102,
+        "passed": true,
+        "variance_each": 0.015625,
+        "variance_sum": 1.0
+      },
+      {
+        "epsilon": 0.0625,
+        "expected_positive_max": 0.17667895493370123,
+        "explicit_upper_bound": 0.4000665336061713,
+        "m": 256,
+        "observed_over_rate": 1.6977044154547187,
+        "passed": true,
+        "variance_each": 0.00390625,
+        "variance_sum": 1.0
+      },
+      {
+        "epsilon": 0.03125,
+        "expected_positive_max": 0.10150748754298165,
+        "explicit_upper_bound": 0.22364399116652575,
+        "m": 1024,
+        "observed_over_rate": 1.7448187682925398,
+        "passed": true,
+        "variance_each": 0.0009765625,
+        "variance_sum": 1.0
+      },
+      {
+        "epsilon": 0.015625,
+        "expected_positive_max": 0.0566575340276429,
+        "explicit_upper_bound": 0.12249485881239226,
+        "m": 4096,
+        "observed_over_rate": 1.7780717688864462,
+        "passed": true,
+        "variance_each": 0.000244140625,
+        "variance_sum": 1.0
+      }
+    ],
+    "proof_certificates": [
+      {
+        "bound": 1.1315590353548781,
+        "derivation": "E[M] <= (E[(Z_+)^q] sum_i v_i^(q/2))^(1/q) <= sqrt(q) epsilon^(1-2/q) = e*sqrt(2)*epsilon*sqrt(log(1/epsilon))",
+        "epsilon": 0.25,
+        "explicit_constant": 3.844231028159117,
+        "q": 2.772588722239781,
+        "q_at_least_2": true
+      },
+      {
+        "bound": 0.6929355626138504,
+        "derivation": "E[M] <= (E[(Z_+)^q] sum_i v_i^(q/2))^(1/q) <= sqrt(q) epsilon^(1-2/q) = e*sqrt(2)*epsilon*sqrt(log(1/epsilon))",
+        "epsilon": 0.125,
+        "explicit_constant": 3.844231028159117,
+        "q": 4.1588830833596715,
+        "q_at_least_2": true
+      },
+      {
+        "bound": 0.4000665336061713,
+        "derivation": "E[M] <= (E[(Z_+)^q] sum_i v_i^(q/2))^(1/q) <= sqrt(q) epsilon^(1-2/q) = e*sqrt(2)*epsilon*sqrt(log(1/epsilon))",
+        "epsilon": 0.0625,
+        "explicit_constant": 3.844231028159117,
+        "q": 5.545177444479562,
+        "q_at_least_2": true
+      },
+      {
+        "bound": 0.22364399116652575,
+        "derivation": "E[M] <= (E[(Z_+)^q] sum_i v_i^(q/2))^(1/q) <= sqrt(q) epsilon^(1-2/q) = e*sqrt(2)*epsilon*sqrt(log(1/epsilon))",
+        "epsilon": 0.03125,
+        "explicit_constant": 3.844231028159117,
+        "q": 6.931471805599453,
+        "q_at_least_2": true
+      },
+      {
+        "bound": 0.12249485881239226,
+        "derivation": "E[M] <= (E[(Z_+)^q] sum_i v_i^(q/2))^(1/q) <= sqrt(q) epsilon^(1-2/q) = e*sqrt(2)*epsilon*sqrt(log(1/epsilon))",
+        "epsilon": 0.015625,
+        "explicit_constant": 3.844231028159117,
+        "q": 8.317766166719343,
+        "q_at_least_2": true
+      }
+    ],
+    "proof_constant": 3.844231028159117,
+    "status": "VERIFIED",
+    "valid_range": "0 < epsilon <= exp(-1)"
+  },
+  "status": "VERIFIED"
+}

@@ -1,0 +1,179 @@
+{
+  "independent_checker": {
+    "checker": "adaptive quadrature independent of the 48-node search objective",
+    "passed": true,
+    "rows": [
+      {
+        "absolute_difference": 1.0658141036401503E-14,
+        "adaptive_quadrature_objective": 0.7031098469798432,
+        "epsilon": 0.8,
+        "grid_tuple_valid": true,
+        "implementation_objective": 0.7031098469798539,
+        "mean_amplitude": 0.3,
+        "passed": true,
+        "support": [
+          4,
+          5
+        ]
+      },
+      {
+        "absolute_difference": 8.881784197001252E-15,
+        "adaptive_quadrature_objective": 0.5062792503184516,
+        "epsilon": 0.7,
+        "grid_tuple_valid": true,
+        "implementation_objective": 0.5062792503184604,
+        "mean_amplitude": 0.0,
+        "passed": true,
+        "support": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "tail_audit": "upper integration limit is max(mu_i+12 sigma_i)"
+  },
+  "negative_control": {
+    "all_standard_deviations_on_epsilon_cubed_grid": false,
+    "control": "continuous equal-variance OPT-like output mislabeled as Algorithm 1",
+    "epsilon": 0.8,
+    "positive_support": 6,
+    "status": "REJECTED_NOT_ALGORITHM_1",
+    "support_cap": 2
+  },
+  "primary": {
+    "algorithm_contract": {
+      "budget_completion": "leftover variance added after grid search; convex order cannot reduce the objective",
+      "objective": "independent Gaussian expected maximum by deterministic quadrature",
+      "search": "all supports up to the cap and every budget-feasible grid tuple",
+      "standard_deviation_grid": "positive multiples of epsilon^3",
+      "support_cap": "ceil(1/epsilon^2)"
+    },
+    "certified_cases": [
+      {
+        "candidate_count": 21,
+        "certified_additive_gap": 0.7774100138106762,
+        "epsilon": 0.8,
+        "grid_spacing": 0.5120000000000001,
+        "mean_amplitude": 0.3,
+        "n": 6,
+        "opt_upper_bound_certificate": "Chernoff log-sum-exp vertex bound",
+        "passed": true,
+        "ptas_objective": 0.7031098469798539,
+        "rigorous_opt_upper_bound": 1.48051986079053,
+        "standard_deviations": [
+          0.5120000000000001,
+          0.8589854480723174
+        ],
+        "support": [
+          4,
+          5
+        ],
+        "support_cap": 2,
+        "variance_sum": 1.0
+      },
+      {
+        "candidate_count": 152,
+        "certified_additive_gap": 0.20082753086808702,
+        "epsilon": 0.7,
+        "grid_spacing": 0.3429999999999999,
+        "mean_amplitude": 0.0,
+        "n": 6,
+        "opt_upper_bound_certificate": "positive-part energy bound",
+        "passed": true,
+        "ptas_objective": 0.5062792503184604,
+        "rigorous_opt_upper_bound": 0.7071067811865475,
+        "standard_deviations": [
+          0.6416813851125808,
+          0.3429999999999999,
+          0.6859999999999998
+        ],
+        "support": [
+          0,
+          1,
+          2
+        ],
+        "support_cap": 3,
+        "variance_sum": 1.0
+      }
+    ],
+    "claim": "Theorem 1.1 independent Gaussian additive PTAS",
+    "proof_certificate": {
+      "finite_opt_upper_bounds": "Chernoff log-sum-exp vertex bound for nonzero means; positive-part energy bound OPT<=1/sqrt(2) for zero means",
+      "lipschitz": "shared-normal coupling gives |Delta E max| <= sqrt(2/pi)*sum_i |Delta sigma_i|",
+      "small_variance_tail": "Claim 5 certificate bounds discarded variables",
+      "support_size": "at most ceil(1/epsilon^2) entries exceed variance epsilon^2",
+      "theorem_calibration": "unspecified O(epsilon) constants require the standard internal-accuracy reparameterization for the universal exact-epsilon statement"
+    },
+    "runtime_seconds": 45.961510032066144,
+    "scaling": [
+      {
+        "candidate_count": 528,
+        "epsilon": 0.8,
+        "n": 32,
+        "objective": 0.759641008304517,
+        "runtime_seconds": 0.039860875927843153,
+        "support": [
+          30,
+          31
+        ],
+        "support_cap": 2,
+        "variance_sum": 1.0
+      },
+      {
+        "candidate_count": 2080,
+        "epsilon": 0.8,
+        "n": 64,
+        "objective": 0.766287866911431,
+        "runtime_seconds": 0.1889581779250875,
+        "support": [
+          62,
+          63
+        ],
+        "support_cap": 2,
+        "variance_sum": 1.0
+      },
+      {
+        "candidate_count": 8256,
+        "epsilon": 0.8,
+        "n": 128,
+        "objective": 0.7696147009727283,
+        "runtime_seconds": 0.974667432019487,
+        "support": [
+          126,
+          127
+        ],
+        "support_cap": 2,
+        "variance_sum": 1.0
+      },
+      {
+        "candidate_count": 32896,
+        "epsilon": 0.8,
+        "n": 256,
+        "objective": 0.7712787601296532,
+        "runtime_seconds": 5.842028819024563,
+        "support": [
+          254,
+          255
+        ],
+        "support_cap": 2,
+        "variance_sum": 1.0
+      },
+      {
+        "candidate_count": 131328,
+        "epsilon": 0.8,
+        "n": 512,
+        "objective": 0.772110925032206,
+        "runtime_seconds": 38.89837487204932,
+        "support": [
+          510,
+          511
+        ],
+        "support_cap": 2,
+        "variance_sum": 1.0
+      }
+    ],
+    "status": "VERIFIED"
+  },
+  "status": "VERIFIED"
+}
