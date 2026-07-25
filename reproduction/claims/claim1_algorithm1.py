@@ -157,16 +157,16 @@ def mgf_opt_upper_bound(means: np.ndarray) -> dict[str, float]:
     return {"upper_bound": upper, "minimizing_t": float(result.x)}
 
 
-def deterministic_means(n: int) -> np.ndarray:
+def deterministic_means(n: int, amplitude: float = 0.3) -> np.ndarray:
     indices = np.arange(n, dtype=float)
-    return 0.3 * (indices / max(1.0, n - 1.0)) ** 1.7
+    return amplitude * (indices / max(1.0, n - 1.0)) ** 1.7
 
 
 def verify_algorithm1() -> dict[str, object]:
     started = time.perf_counter()
     certified_rows: list[dict[str, object]] = []
-    for epsilon in (0.8, 0.7):
-        means = deterministic_means(6)
+    for epsilon, mean_amplitude in ((0.8, 0.3), (0.7, 3.0)):
+        means = deterministic_means(6, mean_amplitude)
         result = algorithm1(means, epsilon)
         upper = mgf_opt_upper_bound(means)
         objective = float(result["best"]["objective"])
@@ -175,6 +175,7 @@ def verify_algorithm1() -> dict[str, object]:
             {
                 "n": 6,
                 "epsilon": epsilon,
+                "mean_amplitude": mean_amplitude,
                 "support_cap": result["support_cap"],
                 "grid_spacing": result["grid_spacing"],
                 "candidate_count": result["candidate_count"],
