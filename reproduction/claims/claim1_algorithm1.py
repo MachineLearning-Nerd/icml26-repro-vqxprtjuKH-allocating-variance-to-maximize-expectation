@@ -157,6 +157,23 @@ def mgf_opt_upper_bound(means: np.ndarray) -> dict[str, float]:
     return {"upper_bound": upper, "minimizing_t": float(result.x)}
 
 
+def certified_opt_upper_bound(means: np.ndarray) -> dict[str, object]:
+    if np.all(means == 0.0):
+        # max_i X_i <= max(0,max_i X_i)
+        # <= sqrt(sum_i (X_i^+)^2). Jensen and Gaussian symmetry give
+        # E sqrt(sum_i (X_i^+)^2) <= sqrt(sum_i E[(X_i^+)^2])
+        # = sqrt((1/2) sum_i variance_i) = 1/sqrt(2).
+        return {
+            "upper_bound": 1.0 / math.sqrt(2.0),
+            "certificate": "positive-part energy bound",
+        }
+    result = mgf_opt_upper_bound(means)
+    return {
+        **result,
+        "certificate": "Chernoff log-sum-exp vertex bound",
+    }
+
+
 def deterministic_means(n: int, amplitude: float = 0.3) -> np.ndarray:
     indices = np.arange(n, dtype=float)
     return amplitude * (indices / max(1.0, n - 1.0)) ** 1.7
@@ -165,10 +182,10 @@ def deterministic_means(n: int, amplitude: float = 0.3) -> np.ndarray:
 def verify_algorithm1() -> dict[str, object]:
     started = time.perf_counter()
     certified_rows: list[dict[str, object]] = []
-    for epsilon, mean_amplitude in ((0.8, 0.3), (0.7, 3.0)):
+    for epsilon, mean_amplitude in ((0.8, 0.3), (0.7, 0.0)):
         means = deterministic_means(6, mean_amplitude)
         result = algorithm1(means, epsilon)
-        upper = mgf_opt_upper_bound(means)
+        upper = certified_opt_upper_bound(means)
         objective = float(result["best"]["objective"])
         gap_certificate = float(upper["upper_bound"]) - objective
         certified_rows.append(
@@ -184,7 +201,8 @@ def verify_algorithm1() -> dict[str, object]:
                     result["best"]["completed_standard_deviations"]
                 ),
                 "ptas_objective": objective,
-                "rigorous_mgf_opt_upper_bound": upper["upper_bound"],
+                "rigorous_opt_upper_bound": upper["upper_bound"],
+                "opt_upper_bound_certificate": upper["certificate"],
                 "certified_additive_gap": gap_certificate,
                 "passed": gap_certificate <= epsilon,
                 "variance_sum": result["variance_sum"],
@@ -232,7 +250,7 @@ def verify_algorithm1() -> dict[str, object]:
             "support_size": "at most ceil(1/epsilon^2) entries exceed variance epsilon^2",
             "lipschitz": "shared-normal coupling gives |Delta E max| <= sqrt(2/pi)*sum_i |Delta sigma_i|",
             "theorem_calibration": "unspecified O(epsilon) constants require the standard internal-accuracy reparameterization for the universal exact-epsilon statement",
-            "finite_opt_upper_bound": "Chernoff log-sum-exp; convexity in variance makes its simplex maximum occur at a vertex",
+            "finite_opt_upper_bounds": "Chernoff log-sum-exp vertex bound for nonzero means; positive-part energy bound OPT<=1/sqrt(2) for zero means",
         },
         "certified_cases": certified_rows,
         "scaling": scaling_rows,

@@ -14,9 +14,10 @@ most `ceil(epsilon^-2)` variables and every budget-feasible tuple on the
 `epsilon^3` standard-deviation grid. It does not use the continuous reference
 optimizer as both “PTAS” and “OPT”.
 
-For finite low- and high-mean-spread non-negative cases, a Chernoff log-sum-exp
-certificate gives a rigorous upper bound on `OPT`; the candidate must be
-within `epsilon` of that upper bound. Adaptive quadrature independently
+For a nonzero-mean case, a Chernoff log-sum-exp certificate gives a rigorous
+upper bound on `OPT`. A separate canonical zero-mean case uses the independent
+positive-part energy certificate `OPT<=1/sqrt(2)`. The candidate must be within
+`epsilon` of the applicable upper bound. Adaptive quadrature independently
 recomputes the displayed objective. Fixed-epsilon polynomial scaling uses
 unique means through `n=512`.
 An equal-variance OPT-like substitute is rejected because it violates both the

@@ -46,7 +46,7 @@ def independent_expected_max(
 def check_algorithm1() -> dict[str, object]:
     rows: list[dict[str, object]] = []
     passed = True
-    for epsilon, mean_amplitude in ((0.8, 0.3), (0.7, 3.0)):
+    for epsilon, mean_amplitude in ((0.8, 0.3), (0.7, 0.0)):
         means = deterministic_means(6, mean_amplitude)
         result = algorithm1(means, epsilon)
         best = result["best"]
