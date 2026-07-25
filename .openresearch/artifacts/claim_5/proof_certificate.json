@@ -1,0 +1,22 @@
+{
+  "certificate_type": "Lp moment bound",
+  "range": "0 < epsilon <= exp(-1)",
+  "definitions": {
+    "M": "max(0,max_i Y_i)",
+    "v_i": "Sigma_ii",
+    "q": "2 log(1/epsilon)"
+  },
+  "steps": [
+    "M^q <= sum_i (Y_i^+)^q pointwise",
+    "E[M] <= (E[M^q])^(1/q)",
+    "E[(Y_i^+)^q] <= q^(q/2) v_i^(q/2)",
+    "sum_i v_i^(q/2) <= epsilon^(q-2) sum_i v_i <= epsilon^(q-2)",
+    "E[M] <= sqrt(q) epsilon^(1-2/q)",
+    "with q=2 log(1/epsilon), epsilon^(-2/q)=e",
+    "E[M] <= e sqrt(2) epsilon sqrt(log(1/epsilon))"
+  ],
+  "explicit_constant": "e sqrt(2)",
+  "dependence_used": "none beyond Gaussian marginal moments",
+  "covers_correlated_case": true
+}
+

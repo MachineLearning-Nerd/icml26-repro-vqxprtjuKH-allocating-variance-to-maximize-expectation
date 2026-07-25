@@ -1,0 +1,8 @@
+{
+  "claim_id": 5,
+  "paper_anchor": "Lemma 2.1",
+  "interpretation": "standard big-O as epsilon tends to zero",
+  "explicit_bound": "e sqrt(2) epsilon sqrt(log(1/epsilon)) for epsilon<=exp(-1)",
+  "verdict": "VERIFIED"
+}
+

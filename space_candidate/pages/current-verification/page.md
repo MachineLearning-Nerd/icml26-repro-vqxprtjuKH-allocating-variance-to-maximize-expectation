@@ -52,6 +52,40 @@ by the fixed OpenResearch command
 `uv run --frozen python -m reproduction.run_all`. The pinned environment is
 `pyproject.toml` plus `uv.lock` in the linked GitHub revision.
 
+## Claim 5 — Lemma 2.1
+
+**Exact reproduction verdict: VERIFIED under the standard
+`epsilon -> 0` big-O reading. Live judge: pending.**
+
+For `M=max(0,max_i Y_i)`, `v_i=Sigma_ii`, and
+`q=2 log(1/epsilon)>=2`, the independent proof certificate checks
+
+`M^q <= sum_i (Y_i^+)^q`,
+
+`sum_i v_i^(q/2) <= epsilon^(q-2) sum_i v_i <= epsilon^(q-2)`,
+
+and the Gaussian moment bound
+`E[(Z_+)^q] <= q^(q/2)`. Therefore
+
+`E[M] <= sqrt(q) epsilon^(1-2/q)
+      = e sqrt(2) epsilon sqrt(log(1/epsilon))`
+
+for `epsilon<=exp(-1)`. This argument uses only Gaussian marginal moments, so
+it permits every correlation allowed by the lemma.
+
+The stress family is non-vacuous: `m=1/epsilon^2` independent variables each
+have variance exactly `epsilon^2`; all variances are positive and their sum is
+one. Adaptive quadrature is independently checked by 512-node Gauss-Legendre
+integration.
+
+- [Raw nonzero cases](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/raw/claim5_nonzero_cases.csv)
+- [Executable verifier](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/code/claim5_verifier.py)
+- [Exact claim contract](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/contracts/claim5_contract.json)
+
+Negative control: removing `sum_i Sigma_ii<=1` restores the uncontrolled
+`sqrt(log m)` factor. The control exits 1 as
+`REJECTED_INVALID_ASSUMPTIONS`.
+
 ## Visibility matrix
 
 | Claim | Canonical page | Code visible | Data inline | Raw link | Checker | Control | Exact claim tested | Reviewer verdict |
@@ -60,6 +94,5 @@ by the fixed OpenResearch command
 | 2 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
 | 3 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
 | 4 | this page | yes | yes | yes | yes | yes | yes | FALSIFIED |
-| 5 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
+| 5 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 | 6 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
-

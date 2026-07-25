@@ -8,9 +8,14 @@ import platform
 import time
 
 from reproduction.checkers.claim4_checker import check_raw_certificate
+from reproduction.checkers.claim5_checker import check_nonzero_family
 from reproduction.claims.claim4_counterexample import (
     verify_counterexample,
     verify_negative_control,
+)
+from reproduction.claims.claim5_lemma21 import (
+    verify_lemma,
+    verify_negative_control as verify_lemma_negative_control,
 )
 
 
@@ -33,10 +38,17 @@ def main() -> int:
     checker4 = check_raw_certificate()
     control4 = verify_negative_control()
     control_rejected = control4["status"] == "REJECTED_AS_COUNTEREXAMPLE"
+    claim5 = verify_lemma()
+    checker5 = check_nonzero_family()
+    control5 = verify_lemma_negative_control()
+    control5_rejected = control5["status"] == "REJECTED_INVALID_ASSUMPTIONS"
     passed = (
         claim4["status"] == "FALSIFIED"
         and bool(checker4["passed"])
         and control_rejected
+        and claim5["status"] == "VERIFIED"
+        and bool(checker5["passed"])
+        and control5_rejected
     )
     result = {
         "schema": "openresearch.claim-suite.v1",
@@ -49,7 +61,13 @@ def main() -> int:
                 "primary": claim4,
                 "independent_checker": checker4,
                 "negative_control": control4,
-            }
+            },
+            "claim_5": {
+                "status": claim5["status"],
+                "primary": claim5,
+                "independent_checker": checker5,
+                "negative_control": control5,
+            },
         },
         "suite_passed": passed,
         "runtime_seconds": time.perf_counter() - started,
@@ -62,4 +80,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

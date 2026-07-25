@@ -1,0 +1,17 @@
+{
+  "claim_id": 5,
+  "paper_anchor": "Lemma 2.1, Section 2.1",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2502.18463#S2.Thmtheorem1",
+  "source_sha256": "12fdb660f2782fdacabf98f8e9b8950438d15b77517c0548677ed30d16b7d9ef",
+  "statement": "For zero-mean jointly Gaussian Y_i with each variance at most epsilon^2 and total marginal variance at most one, E max(0,max_i Y_i)=O(epsilon sqrt(log(1/epsilon))).",
+  "interpretation": "Standard asymptotic big-O as epsilon tends to zero.",
+  "domain": {
+    "dependence": "arbitrary jointly Gaussian covariance",
+    "mean": "zero",
+    "marginal_variance": "0 <= Sigma_ii <= epsilon^2",
+    "total_marginal_variance": "sum_i Sigma_ii <= 1"
+  },
+  "verdict_rule": "VERIFIED by an explicit universal upper bound for epsilon<=exp(-1), plus a nonzero family saturating both variance constraints and independently checked quadrature.",
+  "verdict": "VERIFIED"
+}
+
