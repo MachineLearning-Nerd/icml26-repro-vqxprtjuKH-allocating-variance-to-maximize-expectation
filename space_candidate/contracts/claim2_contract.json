@@ -1,0 +1,8 @@
+{
+  "claim": 2,
+  "paper_anchor": "CorrVarAlloc definition and Theorem 1.2",
+  "counterexample": "n=2, mu=(2,0), epsilon=1/10",
+  "input_certificate": "diag(0,1) is PSD, trace one, and makes X1=2 pointwise, hence OPT>=2",
+  "output_upper": "Every N(0,Sigma_hat) trace-one output has E max(Y1,Y2)<=1/sqrt(pi)",
+  "scope": "Falsifies the theorem as written; does not falsify a repaired zero-mean theorem."
+}

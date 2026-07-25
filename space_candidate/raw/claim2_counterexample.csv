@@ -1,0 +1,2 @@
+n,mu_1,mu_2,epsilon,opt_lower,required_output_lower,zero_mean_output_upper,status
+2,2,0,1/10,2,19/10,1/sqrt(pi),FALSIFIED

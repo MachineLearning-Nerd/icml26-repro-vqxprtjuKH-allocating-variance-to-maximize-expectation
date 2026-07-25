@@ -11,9 +11,14 @@ from reproduction.checkers.claim4_checker import check_raw_certificate
 from reproduction.checkers.claim5_checker import check_nonzero_family
 from reproduction.checkers.claim3_checker import check_algorithm3
 from reproduction.checkers.claim1_checker import check_algorithm1
+from reproduction.checkers.claim2_checker import check_counterexample as check_claim2
 from reproduction.claims.claim1_algorithm1 import (
     verify_algorithm1,
     verify_negative_control as verify_algorithm1_negative_control,
+)
+from reproduction.claims.claim2_counterexample import (
+    verify_counterexample as verify_claim2_counterexample,
+    verify_negative_control as verify_claim2_negative_control,
 )
 from reproduction.claims.claim3_algorithm3 import (
     verify_algorithm3,
@@ -60,6 +65,10 @@ def main() -> int:
     checker1 = check_algorithm1()
     control1 = verify_algorithm1_negative_control()
     control1_rejected = control1["status"] == "REJECTED_NOT_ALGORITHM_1"
+    claim2 = verify_claim2_counterexample()
+    checker2 = check_claim2()
+    control2 = verify_claim2_negative_control()
+    control2_rejected = control2["status"] == "REJECTED_AS_COUNTEREXAMPLE"
     passed = (
         claim4["status"] == "FALSIFIED"
         and bool(checker4["passed"])
@@ -73,6 +82,9 @@ def main() -> int:
         and claim1["status"] == "VERIFIED"
         and bool(checker1["passed"])
         and control1_rejected
+        and claim2["status"] == "FALSIFIED"
+        and bool(checker2["passed"])
+        and control2_rejected
     )
     result = {
         "schema": "openresearch.claim-suite.v1",
@@ -80,6 +92,12 @@ def main() -> int:
         "seed": None,
         "compute": cpu_metadata(),
         "claims": {
+            "claim_2": {
+                "status": claim2["status"],
+                "primary": claim2,
+                "independent_checker": checker2,
+                "negative_control": control2,
+            },
             "claim_1": {
                 "status": claim1["status"],
                 "primary": claim1,

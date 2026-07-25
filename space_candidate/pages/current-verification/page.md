@@ -5,6 +5,35 @@ This page supersedes the historical verifier at revision
 reachable below under the exact navigation label **Historical rejected
 baseline**.
 
+## Claim 2 — Theorem 1.2
+
+**Exact reproduction verdict: FALSIFIED as written. Live judge: pending.**
+
+CorrVarAlloc is defined with supplied means `mu`, but Theorem 1.2 evaluates its
+promised output under `N(0,Sigma_hat)`. Choose `n=2`, `mu=(2,0)`, and
+`epsilon=1/10`. The feasible covariance `diag(0,1)` makes the first input
+variable deterministically two, so `OPT>=2`.
+
+For every literal zero-mean output with trace one,
+
+`E max(Y1,Y2)=E|Y1-Y2|/2 <= 1/sqrt(pi) < 1`,
+
+because PSD and `v(1-v)<=1/4` imply
+`Var(Y1-Y2)<=2`. The promised inequality would require at least
+`OPT-epsilon>=19/10`, which is impossible.
+
+This falsifies the theorem's published quantifiers. It does **not** falsify a
+repaired theorem restricted to zero-mean input; that repair is the negative
+control and removes the contradiction.
+
+| n | mu | epsilon | input OPT lower | required output | zero-mean output upper |
+| ---: | --- | ---: | ---: | ---: | ---: |
+| 2 | (2,0) | 1/10 | 2 | 19/10 | 1/sqrt(pi) |
+
+- [Raw certificate](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/raw/claim2_counterexample.csv)
+- [Executable verifier](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/code/claim2_verifier.py)
+- [Exact claim contract](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/contracts/claim2_contract.json)
+
 ## Claim 1 — Theorem 1.1 and Algorithm 1
 
 **Exact reproduction verdict: pending formal cumulative run.**
@@ -140,7 +169,7 @@ Negative control: removing `sum_i Sigma_ii<=1` restores the uncontrolled
 | Claim | Canonical page | Code visible | Data inline | Raw link | Checker | Control | Exact claim tested | Reviewer verdict |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | this page | yes | pending | pending | yes | yes | yes | BLOCKED |
-| 2 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
+| 2 | this page | yes | yes | yes | yes | yes | yes | FALSIFIED |
 | 3 | this page | yes | pending | pending | yes | yes | yes | BLOCKED |
 | 4 | this page | yes | yes | yes | yes | yes | yes | FALSIFIED |
 | 5 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
