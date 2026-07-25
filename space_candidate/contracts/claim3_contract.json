@@ -1,0 +1,8 @@
+{
+  "claim": 3,
+  "paper_anchor": "Theorem 1.3 and Algorithm 3, Appendix B.2",
+  "statement": "GraphVarAlloc admits a polynomial-time O(log n) multiplicative approximation.",
+  "algorithm": "For every k, greedily select min(4^k,n) variables with variance 4^-k and return the best level.",
+  "scope_audit": "Executable core is zero-mean; paper's reduction invokes non-negative means. Runtime is polynomial in explicit input length.",
+  "verdict_rule": "Require proof obligations, exhaustive small-domain checks, large scaling, independent quadrature, and a rejected fixed-order control."
+}

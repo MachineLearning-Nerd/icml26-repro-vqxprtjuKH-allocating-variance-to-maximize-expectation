@@ -1,0 +1,13 @@
+{
+  "claim": 3,
+  "paper_anchor": "Theorem 1.3 and Algorithm 3, Appendix B.2",
+  "statement": "GraphVarAlloc admits a polynomial-time O(log n) multiplicative approximation.",
+  "domain": {
+    "variables": "independent Gaussian variables",
+    "constraint_sets": "explicit sets S_j subset [n], with singleton sets removed",
+    "variance_budget": "sum_i sigma_i^2 <= 1",
+    "means": "the proof's reduction invokes non-negative means; the executable core uses zero means"
+  },
+  "verdict_rule": "VERIFIED only if the named algorithm, proof obligations, feasibility, independent objective values, exhaustive level guarantees, scaling cases, and negative control all pass.",
+  "universal_claim_policy": "The finite runs are corroboration. The verdict also depends on the independently reconstructed proof certificate and cited lemmas."
+}

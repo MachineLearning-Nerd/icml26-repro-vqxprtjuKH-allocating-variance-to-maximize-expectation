@@ -5,6 +5,30 @@ This page supersedes the historical verifier at revision
 reachable below under the exact navigation label **Historical rejected
 baseline**.
 
+## Claim 3 — Theorem 1.3 and Algorithm 3
+
+**Exact reproduction verdict: pending formal cumulative run.**
+
+The current candidate implements the paper's named Algorithm 3: it tries every
+integer `k=0,...,floor(log2 n)`, greedily selects `min(4^k,n)` variables using
+the exact current GraphVarAlloc objective marginal, assigns selected variance
+`4^-k`, and returns the best level. It does not substitute brute-force OPT for
+the approximation algorithm.
+
+The verifier combines the Appendix B.2 proof obligations with exhaustive
+same-level subset optimization on an eight-variable hypergraph, an independent
+384-node quadrature checker, sparse scaling through `n=16384`, and a star
+negative control. The control replaces greedy marginals with fixed index order
+and must fall below `1-1/e`.
+
+Scope audit: the executable core uses zero means, exactly the core reached by
+the paper's proof. That proof invokes non-negative means even though Theorem
+1.3 does not repeat the sign restriction. Runtime is polynomial in the explicit
+input length; “polynomial in n” also requires a polynomial-length set list.
+
+- [Executable verifier](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/code/claim3_verifier.py)
+- [Exact claim contract](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/contracts/claim3_contract.json)
+
 ## Claim 4 — Theorem 1.6
 
 **Exact reproduction verdict: FALSIFIED as written. Live judge: pending.**
@@ -92,7 +116,7 @@ Negative control: removing `sum_i Sigma_ii<=1` restores the uncontrolled
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
 | 2 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
-| 3 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
+| 3 | this page | yes | pending | pending | yes | yes | yes | BLOCKED |
 | 4 | this page | yes | yes | yes | yes | yes | yes | FALSIFIED |
 | 5 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 | 6 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
