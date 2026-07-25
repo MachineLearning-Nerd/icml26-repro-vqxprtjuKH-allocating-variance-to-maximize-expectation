@@ -1,0 +1,13 @@
+{
+  "dataset": "ICML-2026-agent-repro/verdicts",
+  "dataset_revision": "d43c0a90d0ca2ea63de2bd378034fca6a844f1bf",
+  "dataset_sha256": "10a5e15839bf6a7f71d96d02426c33c8c8eb2d711117585d54b2dd2f6cd00b9f",
+  "filter": "space_id == \"DineshAI/vqxprtjuKH\"",
+  "space_id": "DineshAI/vqxprtjuKH",
+  "space_revision": "f16e54bdef639f2be75cb380594c9371871a3cc4",
+  "judged_at": "2026-07-24T20:40:53+00:00",
+  "score": "5/12",
+  "claim_verdicts": ["toy", "toy", "toy", "inconclusive", "toy", "toy"],
+  "quality": "low"
+}
+

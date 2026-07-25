@@ -1,0 +1,28 @@
+{
+  "claim_id": 4,
+  "paper_anchor": "Theorem 1.6, Section 1.3 and Appendix B.1",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2502.18463#S1.Thmtheorem6",
+  "source_sha256": "12fdb660f2782fdacabf98f8e9b8950438d15b77517c0548677ed30d16b7d9ef",
+  "statement_as_audited": "For any delta>0 and a random GraphVarAlloc instance with n,m tending to infinity, with probability greater than 1-delta, there are Theta(1/p) variables allocated variance Omega(p).",
+  "domain": {
+    "variables": "n independent zero-mean Gaussian variables",
+    "sets": "m independently generated Erdos-Renyi incidence sets",
+    "edge_probability": "p, with no asymptotic restriction stated",
+    "variance_budget": "sum_i sigma_i^2 = 1"
+  },
+  "quantifiers": [
+    "for every delta>0",
+    "random instances as n,m tend to infinity",
+    "no fixed-p or np-to-infinity condition appears in the theorem"
+  ],
+  "verdict_rule": "FALSIFIED if an allowed p_n sequence makes Theta(1/p_n) variables impossible even before optimization.",
+  "counterexample": {
+    "n": "tends to infinity",
+    "m_n": "n",
+    "p_n": "1/n^2",
+    "contradiction": "Theta(1/p_n)=Theta(n^2) variables are demanded, but only n variables exist."
+  },
+  "verdict": "FALSIFIED",
+  "scope_note": "This falsifies the theorem as written. It does not falsify a repaired fixed-p theorem."
+}
+

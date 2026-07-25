@@ -1,0 +1,10 @@
+{
+  "claim_id": 4,
+  "paper_anchor": "Theorem 1.6",
+  "source_sha256": "12fdb660f2782fdacabf98f8e9b8950438d15b77517c0548677ed30d16b7d9ef",
+  "quantifier": "n,m tend to infinity; p has no stated asymptotic restriction",
+  "counterexample": "m_n=n and p_n=n^-2",
+  "verdict": "FALSIFIED",
+  "scope": "the theorem as written, not a repaired fixed-p theorem"
+}
+

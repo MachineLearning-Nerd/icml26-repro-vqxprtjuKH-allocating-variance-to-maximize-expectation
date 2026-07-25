@@ -1,0 +1,16 @@
+[project]
+name = "allocating-variance-reproduction"
+version = "0.1.0"
+description = "Claim-by-claim reproduction of arXiv:2502.18463"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "marimo>=0.14,<1",
+  "matplotlib>=3.10,<4",
+  "numpy>=2.2,<3",
+  "scipy>=1.15,<2",
+  "sympy>=1.13,<2",
+]
+
+[tool.uv]
+package = false
+
