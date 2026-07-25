@@ -5,6 +5,29 @@ This page supersedes the historical verifier at revision
 reachable below under the exact navigation label **Historical rejected
 baseline**.
 
+## Claim 1 — Theorem 1.1 and Algorithm 1
+
+**Exact reproduction verdict: pending formal cumulative run.**
+
+The candidate now runs the paper's distinct PTAS: it enumerates supports of at
+most `ceil(epsilon^-2)` variables and every budget-feasible tuple on the
+`epsilon^3` standard-deviation grid. It does not use the continuous reference
+optimizer as both “PTAS” and “OPT”.
+
+For finite non-negative-mean cases, a Chernoff log-sum-exp certificate gives a
+rigorous upper bound on `OPT`; the candidate must be within `epsilon` of that
+upper bound. Adaptive quadrature independently recomputes the displayed
+objective. Fixed-epsilon polynomial scaling uses unique means through `n=512`.
+An equal-variance OPT-like substitute is rejected because it violates both the
+support cap and the specified grid.
+
+The paper's proof states `O(epsilon)` loss; the exact theorem uses the standard
+PTAS reparameterization to a smaller internal accuracy. The candidate exposes
+that calibration and its hidden-constant limitation.
+
+- [Executable verifier](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/code/claim1_verifier.py)
+- [Exact claim contract](https://huggingface.co/spaces/DineshAI/vqxprtjuKH/blob/main/contracts/claim1_contract.json)
+
 ## Claim 3 — Theorem 1.3 and Algorithm 3
 
 **Exact reproduction verdict: pending formal cumulative run.**
@@ -114,7 +137,7 @@ Negative control: removing `sum_i Sigma_ii<=1` restores the uncontrolled
 
 | Claim | Canonical page | Code visible | Data inline | Raw link | Checker | Control | Exact claim tested | Reviewer verdict |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
+| 1 | this page | yes | pending | pending | yes | yes | yes | BLOCKED |
 | 2 | pending | pending | pending | pending | pending | pending | pending | BLOCKED |
 | 3 | this page | yes | pending | pending | yes | yes | yes | BLOCKED |
 | 4 | this page | yes | yes | yes | yes | yes | yes | FALSIFIED |

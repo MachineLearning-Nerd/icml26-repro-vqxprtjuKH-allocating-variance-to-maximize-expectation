@@ -1,0 +1,7 @@
+{
+  "claim": 1,
+  "paper_anchor": "Theorem 1.1 and Algorithm 1, Appendix A.1",
+  "statement": "For non-negative means and constant epsilon>0, an independent-Gaussian variance allocation can be found in polynomial time with objective at least OPT-epsilon.",
+  "algorithm": "Enumerate support bounded by ceil(epsilon^-2), standard deviations on the epsilon^3 grid, and return the best expected maximum.",
+  "verdict_rule": "Require distinct PTAS structure, exact variance feasibility, certified OPT upper bounds on finite cases, independent quadrature, scaling, proof calibration, and rejection of an OPT-like substitute."
+}

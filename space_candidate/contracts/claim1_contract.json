@@ -1,0 +1,7 @@
+{
+  "claim": 1,
+  "paper_anchor": "Theorem 1.1 and Algorithm 1, Appendix A.1",
+  "statement": "For mu_i>=0 and fixed epsilon, return an independent variance allocation with value at least OPT-epsilon in polynomial time.",
+  "named_algorithm": "support <= ceil(epsilon^-2), epsilon^3 standard-deviation grid, exhaustive best candidate",
+  "requirements": "OPT upper-bound certificate, independent quadrature, scaling, proof calibration, and rejected OPT-surrogate control"
+}

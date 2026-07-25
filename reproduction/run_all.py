@@ -10,6 +10,11 @@ import time
 from reproduction.checkers.claim4_checker import check_raw_certificate
 from reproduction.checkers.claim5_checker import check_nonzero_family
 from reproduction.checkers.claim3_checker import check_algorithm3
+from reproduction.checkers.claim1_checker import check_algorithm1
+from reproduction.claims.claim1_algorithm1 import (
+    verify_algorithm1,
+    verify_negative_control as verify_algorithm1_negative_control,
+)
 from reproduction.claims.claim3_algorithm3 import (
     verify_algorithm3,
     verify_negative_control as verify_algorithm3_negative_control,
@@ -51,6 +56,10 @@ def main() -> int:
     checker3 = check_algorithm3()
     control3 = verify_algorithm3_negative_control()
     control3_rejected = control3["status"] == "REJECTED_BAD_SUBSTITUTE"
+    claim1 = verify_algorithm1()
+    checker1 = check_algorithm1()
+    control1 = verify_algorithm1_negative_control()
+    control1_rejected = control1["status"] == "REJECTED_NOT_ALGORITHM_1"
     passed = (
         claim4["status"] == "FALSIFIED"
         and bool(checker4["passed"])
@@ -61,6 +70,9 @@ def main() -> int:
         and claim3["status"] == "VERIFIED"
         and bool(checker3["passed"])
         and control3_rejected
+        and claim1["status"] == "VERIFIED"
+        and bool(checker1["passed"])
+        and control1_rejected
     )
     result = {
         "schema": "openresearch.claim-suite.v1",
@@ -68,6 +80,12 @@ def main() -> int:
         "seed": None,
         "compute": cpu_metadata(),
         "claims": {
+            "claim_1": {
+                "status": claim1["status"],
+                "primary": claim1,
+                "independent_checker": checker1,
+                "negative_control": control1,
+            },
             "claim_3": {
                 "status": claim3["status"],
                 "primary": claim3,
