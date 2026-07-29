@@ -1,0 +1,31 @@
+{
+  "fixed_command": "uv run --frozen python -m reproduction.run_all",
+  "git_sha": "dc11c556f7dbf34bc643e60eb3c1e11bce682e88",
+  "orx_run_id": "1da2d5d6-f35e-404d-a38a-77cf5b257b0b",
+  "backend": "hf",
+  "selected_flavor": "cpu-upgrade",
+  "image": "ghcr.io/astral-sh/uv:python3.12-bookworm-slim",
+  "scientific_seed_contract": {
+    "sobol_train": 250218463,
+    "sobol_validation": 250218464,
+    "finite_seeds": [
+      101,
+      202,
+      303
+    ],
+    "checker_seed": 184632502
+  },
+  "sample_contract": {
+    "train": 4096,
+    "validation": 32768,
+    "finite_m": 8192,
+    "checker": 32768
+  },
+  "visible_logical_cpus": 64,
+  "affinity_cpus": 64,
+  "designed_worker_count": 1,
+  "python": "3.12.12",
+  "scientific_runtime_seconds": 8.476211254950613,
+  "cumulative_runtime_seconds": 47.6025578409899,
+  "suite_passed": true
+}

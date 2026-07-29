@@ -1,0 +1,14 @@
+{
+  "claim": 6,
+  "paper_anchor": "Figures 1-2 and Section 1.3",
+  "statement": "Monte Carlo simulations at n=8 and p=1/8,...,1 illustrate concavity and concentration under independent and exact +/-1 block-correlated Gaussian settings.",
+  "independent_replication_status": "VERIFIED",
+  "exact_published_plot_status": "BLOCKED",
+  "models": {
+    "fixed_cardinality": "all size-k subsets with p=k/8, matching p=|S_j|/n and Theorem 1.5",
+    "bernoulli_conditioned_nonempty": "independent set membership with probability p, matching the Erdos-Renyi caption; condition on nonempty sets because max over an empty set is undefined"
+  },
+  "verification_rule": "For both models and all three correlation regimes, require no four-standard-error concavity violation, increased concentration from p=2/8 to p=1, convergence of every optimizer, agreement of all finite-m multi-seed estimates with the population reference, an independent pseudo-random checker, and rejection of the invalid substitute.",
+  "falsification_rule": "A four-standard-error positive second difference reproduced by the independent checker, or failure of concentration under either paper-consistent model, prevents verification and triggers a dedicated falsification audit.",
+  "protected_revision": "DineshAI/vqxprtjuKH@8fee0d82c15f0f5aa61cbb8fbdd6d7383514889a"
+}

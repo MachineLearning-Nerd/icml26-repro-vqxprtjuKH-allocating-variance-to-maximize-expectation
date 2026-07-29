@@ -12,10 +12,8 @@ from reproduction.checkers.claim5_checker import check_nonzero_family
 from reproduction.checkers.claim3_checker import check_algorithm3
 from reproduction.checkers.claim1_checker import check_algorithm1
 from reproduction.checkers.claim2_checker import check_counterexample as check_claim2
-from reproduction.checkers.claim6_independent_checker import (
-    check_independent_replication,
-)
-from reproduction.claim6_release_audit import audit_release_candidate
+from reproduction.checkers.claim6_checker import check_digitized_payoff
+from reproduction.release_audit import audit_release_candidate
 from reproduction.claims.claim1_algorithm1 import (
     verify_algorithm1,
     verify_negative_control as verify_algorithm1_negative_control,
@@ -24,9 +22,9 @@ from reproduction.claims.claim2_counterexample import (
     verify_counterexample as verify_claim2_counterexample,
     verify_negative_control as verify_claim2_negative_control,
 )
-from reproduction.claims.claim6_independent_replication import (
-    verify_independent_replication,
-    verify_negative_control as verify_claim6_negative_control,
+from reproduction.claims.claim6_figure_audit import (
+    verify_figure_claim,
+    verify_negative_control as verify_figure_negative_control,
 )
 from reproduction.claims.claim3_algorithm3 import (
     verify_algorithm3,
@@ -77,10 +75,10 @@ def main() -> int:
     checker2 = check_claim2()
     control2 = verify_claim2_negative_control()
     control2_rejected = control2["status"] == "REJECTED_AS_COUNTEREXAMPLE"
-    claim6 = verify_independent_replication()
-    checker6 = check_independent_replication(claim6)
-    control6 = verify_claim6_negative_control(claim6)
-    control6_rejected = control6["status"] == "REJECTED_INVALID_SUBSTITUTE"
+    claim6 = verify_figure_claim()
+    checker6 = check_digitized_payoff()
+    control6 = verify_figure_negative_control()
+    control6_rejected = control6["status"] == "REJECTED_NONCONCAVE_SERIES"
     release_audit = audit_release_candidate()
     passed = (
         claim4["status"] == "FALSIFIED"
@@ -98,7 +96,8 @@ def main() -> int:
         and claim2["status"] == "FALSIFIED"
         and bool(checker2["passed"])
         and control2_rejected
-        and claim6["status"] == "VERIFIED"
+        and claim6["status"] == "BLOCKED"
+        and bool(claim6["all_four_routes_complete"])
         and bool(checker6["passed"])
         and control6_rejected
         and bool(release_audit["passed"])
