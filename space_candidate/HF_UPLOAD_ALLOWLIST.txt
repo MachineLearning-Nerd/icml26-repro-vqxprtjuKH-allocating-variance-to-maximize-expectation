@@ -15,6 +15,7 @@ contracts/claim6_independent_contract.json
 logbook.json
 pages/claim-6-independent-replication/page.md
 protected_10_12/HF_UPLOAD_ALLOWLIST.txt
+protected_10_12/MANIFEST.sha256
 protected_10_12/SHA256SUMS.txt
 protected_10_12/logbook.json
 protected_10_12/reproduction_run_all.py

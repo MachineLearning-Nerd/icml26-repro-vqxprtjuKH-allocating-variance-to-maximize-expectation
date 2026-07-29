@@ -7,7 +7,16 @@ import hashlib
 from pathlib import Path
 
 
-TEXT_SUFFIXES = {".csv", ".json", ".lock", ".md", ".py", ".toml", ".txt"}
+TEXT_SUFFIXES = {
+    ".csv",
+    ".json",
+    ".lock",
+    ".md",
+    ".py",
+    ".sha256",
+    ".toml",
+    ".txt",
+}
 ALWAYS_TEXT = {".python-version", "HF_UPLOAD_ALLOWLIST.txt", "SHA256SUMS.txt"}
 
 
