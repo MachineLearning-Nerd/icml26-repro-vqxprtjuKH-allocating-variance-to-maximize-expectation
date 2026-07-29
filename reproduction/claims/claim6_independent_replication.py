@@ -172,7 +172,7 @@ def optimize_case(
                 "type": "eq",
                 "fun": lambda variance: float(np.sum(variance) - 1.0),
             },
-            options={"ftol": 1e-10, "maxiter": 90, "disp": False},
+            options={"ftol": 1e-10, "maxiter": 180, "disp": False},
         )
         variance = _interior(result.x)
         candidates.append(
@@ -430,7 +430,7 @@ def verify_independent_replication() -> dict[str, object]:
             "train_seed": TRAIN_SEED,
             "validation_seed": VALIDATION_SEED,
             "optimizer": "SLSQP on the variance simplex",
-            "optimizer_max_iterations": 90,
+            "optimizer_max_iterations": 180,
             "optimizer_ftol": 1e-10,
             "common_random_numbers": True,
             "finite_m": FINITE_M,
